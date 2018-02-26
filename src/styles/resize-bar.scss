@@ -1,0 +1,37 @@
+.col-resize-bar {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    right: -8px;
+    height: 100%;
+    z-index: 100000;
+    cursor: col-resize;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    &.active {
+        .holder {
+            opacity: 1;
+            background-color: #64b5f6;
+        } 
+    }
+
+    .holder {
+        top: 25%;
+        width: 1px;
+        height: 50%;
+        position: absolute;
+        transition: all linear 100ms;
+        background-color: #e0e0e0;
+        opacity: 0;
+    }
+
+    .holder-left {
+         left: 5px;
+    }
+
+    .holder-right {
+         left: 7px;
+    }
+}

@@ -1,0 +1,23 @@
+.cg-header {
+    position: sticky;
+    top: 0;
+
+    .cg-row {
+        background: $header-bg-color;
+    }
+
+    .cg-h-cell {
+        color:  $header-color;
+        width: 100px;
+        font-size: 12px;
+        position: relative;
+
+        &:hover {
+            .col-resize-bar > .holder {
+                opacity: 1;
+            }
+        }
+
+        @import './resize-bar.scss';
+    }
+}

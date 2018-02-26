@@ -1,0 +1,38 @@
+.c-grid {
+    font-family: Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif;
+    $row-height: 40px;
+    $row-color: rgba(0,0,0,.87);
+    $row-bg-color: white;
+    $heder-height: 40px;
+    $header-color: rgba(0,0,0,.54);
+    $header-bg-color: white;
+    $border-color :rgb(224,224,224);
+    border: 1px solid $border-color;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    div {
+        box-sizing: border-box;
+    }
+
+    .cg-row {
+        border-bottom: 1px solid $border-color;
+        overflow: hidden;
+
+        .cg-h-cell, .cg-cell {
+            padding: 0 8px;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    @import './header.scss';
+    @import './body.scss';
+    @import './pagination.scss';
+    @import './progress-bar.scss';
+    @import './scrollbar.scss';
+}

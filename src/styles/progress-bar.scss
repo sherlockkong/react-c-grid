@@ -1,0 +1,24 @@
+.cg-progress-bar-wrapper {
+    position: fixed;
+    z-index: 1000;
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    .cg-progress-bar-bg {
+        background: rgb(189, 189, 189);
+        overflow: hidden;
+        height: 4px;
+        position: absolute;
+        width: 100%;
+        display: none;
+
+        .cg-progress-bar {
+            height: 4px;
+            position: absolute;
+            background: rgb(0, 188, 212);
+        }
+    }
+}

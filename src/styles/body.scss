@@ -1,0 +1,10 @@
+.cg-body {
+    .cg-row {
+        background: $row-bg-color;
+        color:  $row-color;
+
+        .cg-cell {
+            font-size: 13px;
+        }
+    }
+}

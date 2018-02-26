@@ -1,0 +1,75 @@
+.cg-pagination {
+    background: $header-bg-color;
+    position: sticky;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid $border-color;
+    flex-direction: row-reverse;
+    padding: 0 15px;
+
+    .count-msg {
+        font-size: 12px;
+        color: $header-color;
+        margin-right: 40px;
+    }
+
+    .cg-pages {
+        display: flex;
+        font-size: 14px;
+        
+        .cg-page, 
+        .cg-page-button {
+            height: 40px;
+            width: 40px;
+            outline: none;
+            color: $row-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            transition: all .3s;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 0 5px;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.12);
+            }
+
+            &.selected {
+                font-weight: bold;
+            }
+        }
+
+        .cg-page-ellipsis{
+            pointer-events: none;
+        }
+
+        .cg-page-button {
+            svg {
+                fill: $header-color;
+            }
+
+            &.disabled {
+                pointer-events: none;
+
+                &:hover {
+                    background: none;
+                }
+            }
+        }
+
+        .cg-page-ellipsis {
+            height: 40px;
+            width: 40px;
+            outline: none;
+            color: $header-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

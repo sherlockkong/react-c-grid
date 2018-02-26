@@ -1,0 +1,17 @@
+@import './../src/styles/cgrid.scss';
+// @import './../lib/index.css';
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    #root {
+        height: 100%;
+    }
+}
+
+body {
+    padding: 20px;
+    height: calc(100% - 40px);
+}
