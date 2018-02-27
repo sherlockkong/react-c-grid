@@ -15,6 +15,13 @@ export default class ProgressBar extends React.Component {
 
     componentDidMount = () => this.checkEvent()
     componentDidUpdate = () => this.checkEvent()
+    componentWillUnmount = () => {
+        if (this._timer) {
+            clearInterval(this._timer)
+            this._timer = undefined
+            utils.enableScroll()
+        }
+    }
 
     checkEvent = () => {
         const { show } = this.props

@@ -18,6 +18,10 @@ export default class ResizeBar extends React.Component {
         document.addEventListener('mousemove', this.onMouseMove)
         document.addEventListener('mouseup', this.onMouseUp)
     }
+    componentWillUnmount = () => {
+        document.removeEventListener('mousemove', this.onMouseMove)
+        document.removeEventListener('mouseup', this.onMouseUp)
+    }
 
     onMouseDown = (e) => {
         if (e.button === 0) { // left button

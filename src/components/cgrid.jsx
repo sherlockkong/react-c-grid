@@ -34,8 +34,11 @@ export default class CGrid extends React.Component {
         if (nextProps.rows &&
             this.props.rows &&
             nextProps.rows.length != this.props.rows.length) {
-                this.updateRowsSize()
+            this.updateRowsSize()
         }
+    }
+    componentWillUnmount = () => {
+        window.removeEventListener('resize', this.updateGridSize)
     }
 
     initGridSize = () => {

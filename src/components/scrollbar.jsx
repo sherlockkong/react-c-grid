@@ -17,11 +17,27 @@ export default class Scrollbar extends React.Component {
     componentDidUpdate = () => {
         this.updateScrollBarSize()
     }
+    componentWillUnmount = () => {
+        this.detachEvents()
+    }
+
     attachEvents = () => {
-        window.addEventListener('resize', () => setTimeout(this.updateScrollBarSize))
-        document.addEventListener('cgrid-column-resizing', () => setTimeout(this.updateScrollBarSize))
+        window.addEventListener('resize', this.onResize)
+        document.addEventListener('cgrid-column-resizing', this.onColumnResize)
         document.addEventListener('mouseup', this.onDocumentMouseUp)
         document.addEventListener('mousemove', this.onDocumentMouseMove)
+    }
+    detachEvents = () => {
+        window.removeEventListener('resize', this.onResize)
+        document.removeEventListener('cgrid-column-resizing', this.onColumnResize)
+        document.removeEventListener('mouseup', this.onDocumentMouseUp)
+        document.removeEventListener('mousemove', this.onDocumentMouseMove)
+    }
+    onWindowResize = () => {
+        () => setTimeout(this.updateScrollBarSize)
+    }
+    onColumnResize = () => {
+        () => setTimeout(this.updateScrollBarSize)
     }
     onDocumentMouseUp = (e) => {
         this._mouseDownOffsetY = undefined
