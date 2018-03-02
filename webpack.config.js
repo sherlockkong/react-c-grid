@@ -1,28 +1,23 @@
-var path = require('path')
-var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-module.exports = {
+const plugins = [
+    new ExtractTextPlugin("index.css"),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
+];
+
+const config = {
     entry: { app: "./sample/index.js" },
-
-    devtool: 'inline-source-map',
 
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'sample/dist')
+        path: path.resolve(__dirname, 'sample/public/dist')
     },
 
-    devServer: {
-        contentBase: './sample/dist',
-        port: 7777,
-        hot: true
-    },
-
-    plugins: [
-        new ExtractTextPlugin("index.css"),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
-    ],
+    plugins: plugins,
 
     module: {
         rules: [
@@ -45,3 +40,18 @@ module.exports = {
         extensions: ['.js', '.jsx']
     }
 }
+
+if (process.env.NODE_ENV === 'production') {
+    plugins.push(new webpack.optimize.UglifyJsPlugin())
+} else {
+    plugins.push(new webpack.NamedModulesPlugin())
+    plugins.push(new webpack.HotModuleReplacementPlugin())
+    config.devtool = 'inline-source-map'
+    config.devServer = {
+        contentBase: './sample/public/dist',
+        port: 7777,
+        hot: true
+    }
+}
+
+module.exports = config
