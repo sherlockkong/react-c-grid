@@ -15,9 +15,12 @@ export default class Header extends React.Component {
         let columns = this.props.columns
             ? this.props.columns
             : utils.generateColumns(this.props.rows)
+        let height = this.props.rowHeight
+            ? this.props.rowHeight
+            : utils.DefaultRowHeight
         let style = {
-            height: `${utils.DefaultRowHeight}px`,
-            lineHeight: `${utils.DefaultRowHeight}px`
+            height: `${height}px`,
+            lineHeight: `${height}px`
         }
 
         return <div className="cg-row" style={style}>

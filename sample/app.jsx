@@ -33,8 +33,9 @@ export default class App extends Component {
             selectedPageChanged: this.selectedPageChanged
         }
         let subRows = rows.slice((this.state.selected - 1) * pagination.pageSize, this.state.selected * pagination.pageSize)
-        
+
         return <CGrid
+            // rowHeight={40}
             rows={subRows}
             columns={columns}
             columnResizing={true}

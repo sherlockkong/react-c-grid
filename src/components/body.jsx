@@ -13,15 +13,16 @@ export default class Body extends React.Component {
     }
 
     renderRows = () => {
-        const { rows } = this.props
+        const { rows, rowHeight } = this.props
         if (!rows) return null
         let columns = this.props.columns
             ? this.props.columns
             : utils.generateColumns(this.props.rows)
 
+        let height = rowHeight ? rowHeight: utils.DefaultRowHeight
         let style = {
-            height: `${utils.DefaultRowHeight}px`,
-            lineHeight: `${utils.DefaultRowHeight}px`
+            height: `${height}px`,
+            lineHeight: `${height}px`
         }
 
         return rows.map((row, rIndex) =>

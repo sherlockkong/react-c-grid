@@ -12,6 +12,7 @@ import * as utils from '../utils'
  *      columns: []
  *      pagination: {}
  *      progressBar: {}
+ *      rowHeight: number
  * 
  *  Column Props:
  *      key: string
@@ -154,7 +155,7 @@ export default class CGrid extends React.Component {
     }
 
     render() {
-        const { rows, columns, progressBar, pagination } = this.props
+        const { rows, columns, progressBar, pagination, rowHeight } = this.props
 
         return <div
             id={this._gridId}
@@ -166,17 +167,19 @@ export default class CGrid extends React.Component {
                     gridId={this._gridId}
                     rows={rows}
                     columnResizing={this.props.columnResizing}
-                    columns={this.props.columns}
+                    columns={columns}
+                    rowHeight={rowHeight}
                     ref={ref => this._header = ref}
                 />
 
                 <Body
                     rows={rows}
                     columns={columns}
+                    rowHeight={rowHeight}
                     ref={ref => this._body = ref}
                 />
 
-                {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} />}
+                {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} rowHeight={rowHeight} />}
                 {progressBar && <ProgressBar {...progressBar} />}
             </Scrollbar>
         </div>
