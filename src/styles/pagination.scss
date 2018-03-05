@@ -1,5 +1,6 @@
 .cg-pagination {
     background: $header-bg-color;
+    position: -webkit-sticky;
     position: sticky;
     height: 50px;
     display: flex;
