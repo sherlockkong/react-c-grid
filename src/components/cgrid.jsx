@@ -108,13 +108,16 @@ export default class CGrid extends React.Component {
         let row = this._header._dom.querySelector('.cg-row'),
             rowWidth = parseInt(row.style.width),
             cells = row.querySelectorAll('.cg-h-cell')
+
+        // update body size
+        let bodyWidth = `${this._grid.clientWidth}px`,
+            paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
+            bodyMinHeight = `${this._grid.clientHeight - this._header._dom.clientHeight - paginationHeight}px`
+
+        this._body._dom.style.minHeight = bodyMinHeight
+
         if (this._grid.clientWidth >= rowWidth) {
-            // update body size
-            let bodyWidth = `${this._grid.clientWidth}px`,
-                paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
-                bodyMinHeight = `${this._grid.clientHeight - this._header._dom.clientHeight - paginationHeight}px`
             this._body._dom.style.minWidth = bodyWidth
-            this._body._dom.style.minHeight = bodyMinHeight
 
             let sum = 0
             cells.forEach((cell, index) => {

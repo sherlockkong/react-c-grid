@@ -25,7 +25,7 @@ export default class App extends Component {
 
     render() {
         let pagination = {
-            pageSize: 12,
+            pageSize: 22,
             selected: this.state.selected,
             itemsCount: rows.length,
             visiblePageCount: 6,

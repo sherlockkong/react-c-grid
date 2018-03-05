@@ -1,6 +1,8 @@
 react-c-grid
 =========================
 
+[Demo](http://www.sherlockkong.com/) 
+
 ## Installation
 ```bash
 npm install react-c-grid
