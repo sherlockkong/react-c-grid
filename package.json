@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node ./sample/server.js",
     "wds": "webpack-dev-server --open",
-    "build": "babel src --out-dir lib && sass --sourcemap=none src/styles/cgrid.scss lib/index.css && NODE_ENV=production&&webpack"
+    "build": "babel src --out-dir lib && sass --sourcemap=none src/styles/cgrid.scss lib/index.css &&NODE_ENV=production webpack"
   },
   "peerDependencies": {
     "react": "^16.2.0",
