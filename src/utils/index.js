@@ -82,11 +82,7 @@ export function getScrollbarWidth() {
     return scrollbarWidth || 0
 }
 
-export const DefaultRowHeight = 48
-export const DefaultCellWidth = 100
-export const EmptyHolderWidth = 30
-
-function nodeListForEachPolyill() {
+export function nodeListForEachPolyill() {
     if (window.NodeList && !NodeList.prototype.forEach) {
         NodeList.prototype.forEach = function (callback, thisArg) {
             thisArg = thisArg || window;
@@ -96,4 +92,7 @@ function nodeListForEachPolyill() {
         };
     }
 }
-nodeListForEachPolyill()
+
+export const DefaultRowHeight = 48
+export const DefaultCellWidth = 100
+export const EmptyHolderWidth = 30

@@ -5,6 +5,9 @@ import Pagination from './pagination'
 import ProgressBar from './progress-bar'
 import Scrollbar from './scrollbar'
 import * as utils from '../utils'
+import 'stickyfilljs'
+
+utils.nodeListForEachPolyill()
 
 /**
  *  Props: 
