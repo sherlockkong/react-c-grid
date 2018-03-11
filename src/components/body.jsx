@@ -6,6 +6,7 @@ import * as utils from './../utils'
 /**
  *  Props: 
  *      rows: []
+ *      onRenderCell: (key, row) => react element
  */
 export default class Body extends React.Component {
     constructor(props, context) {
@@ -19,26 +20,35 @@ export default class Body extends React.Component {
             ? this.props.columns
             : utils.generateColumns(this.props.rows)
 
-        let height = rowHeight ? rowHeight: utils.DefaultRowHeight
+        let height = rowHeight ? rowHeight : utils.DefaultRowHeight
         let style = {
             height: `${height}px`,
             lineHeight: `${height}px`
         }
 
         return rows.map((row, rIndex) =>
-            <div className="cg-row" style={style} key={`cg-row-${rIndex}`}>
+            <div className={`cg-row ${rIndex % 2 == 0 ? 'even' : 'odd'}`} style={style} key={`cg-row-${rIndex}`}>
                 {columns.map((col, index) =>
                     <div style={style} className={`cg-col-${index} cg-cell`} key={`cell-${rIndex}-${index}`}>
-                        {row[col.key]}
+                        {this.renderCell(col.key, row)}
                     </div>
                 )}
             </div>
         )
     }
+    renderCell = (key, row) => {
+        const { onRenderCell } = this.props
+        if (typeof onRenderCell === 'function') {
+            let cell = onRenderCell(key, row)
+            return cell === undefined ? row[key] : cell
+        } else {
+            return row[key]
+        }
+    }
 
     render() {
-        return <
-            div className="cg-body"
+        return <div
+            className='cg-body'
             ref={ref => this._dom = ref}
         >
             {this.renderRows()}

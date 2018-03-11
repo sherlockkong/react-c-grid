@@ -166,8 +166,8 @@ export default class Scrollbar extends React.Component {
     }
     hideScrollbar = () => {
         this._hideScrollbarTimerId = setTimeout(() => {
-            this._vBar.style.opacity = 0
-            this._hBar.style.opacity = 0
+            if (this._vBar) this._vBar.style.opacity = 0
+            if (this._hBar) this._hBar.style.opacity = 0
         }, 500)
     }
 

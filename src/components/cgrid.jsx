@@ -16,6 +16,9 @@ utils.nodeListForEachPolyill()
  *      pagination: {}
  *      progressBar: {}
  *      rowHeight: number
+ *      columnResizing: bool
+ *      hideGridLine: bool
+ *      onRenderCell: (key, row) => react element
  * 
  *  Column Props:
  *      key: string
@@ -161,11 +164,11 @@ export default class CGrid extends React.Component {
     }
 
     render() {
-        const { rows, columns, progressBar, pagination, rowHeight } = this.props
+        const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, hideGridLine } = this.props
 
         return <div
             id={this._gridId}
-            className="c-grid"
+            className={`c-grid ${hideGridLine ? 'hide-grid-line' : ''}`}
             ref={ref => this._grid = ref}
         >
             <Scrollbar>
@@ -183,6 +186,7 @@ export default class CGrid extends React.Component {
                     columns={columns}
                     rowHeight={rowHeight}
                     ref={ref => this._body = ref}
+                    onRenderCell={onRenderCell}
                 />
 
                 {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} rowHeight={rowHeight} />}

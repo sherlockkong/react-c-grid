@@ -1,12 +1,15 @@
 .c-grid {
-    font-family: Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif;
     $row-height: 40px;
     $row-color: rgba(0,0,0,.87);
     $row-bg-color: white;
+    $odd-row-bg-color: rgb(246,246,246);
+
     $heder-height: 40px;
     $header-color: rgba(0,0,0,.54);
     $header-bg-color: white;
     $border-color :rgb(224,224,224);
+
+    font-family: Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif;
     border: 1px solid $border-color;
     height: 100%;
     width: 100%;
@@ -28,6 +31,18 @@
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+        }
+    }
+
+    &.hide-grid-line {
+        border: none;
+
+        .cg-row {
+            border: none;
+
+            &.odd {
+                background: $odd-row-bg-color;
+            }
         }
     }
 
