@@ -28,7 +28,7 @@ class App extends Component {
         const rows = [/* ... */]
 
         return <CGrid 
-            rows={subRows} 
+            rows={rows} 
             columns={columns} 
         />
     }
