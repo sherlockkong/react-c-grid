@@ -38,6 +38,12 @@ export default class CGrid extends React.Component {
         window.addEventListener('resize', this.updateGridSize)
     }
     componentDidUpdate = (nextProps) => {
+        if (nextProps.columns &&
+            this.props.columns &&
+            nextProps.columns.length != this.props.columns.length) {
+            this.initGridSize()
+        }
+
         if (nextProps.rows &&
             this.props.rows &&
             nextProps.rows.length != this.props.rows.length) {
