@@ -55,6 +55,21 @@ class Pagination extends Component {
 }
 
 const Code = `
+selectedPageChanged = (selected) => {
+    this.setState({ selected: selected })
+    this.setState({
+        progressBar: {
+            show: true,
+            color: 'rgb(29,169,240)',
+            background: 'rgb(199,199,199)'
+        }
+    })
+
+    setTimeout(() => {
+        this.setState({ progressBar: { show: false } })
+    }, 1000)
+}
+
 render() {
     const { rows } = this.props
     const columns = [
