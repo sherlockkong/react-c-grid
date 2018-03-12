@@ -23,6 +23,8 @@
       border: none; }
       .c-grid.hide-grid-line .cg-row.odd {
         background: #f6f6f6; }
+    .c-grid.hide-grid-line .cg-pagination {
+      border: none; }
   .c-grid .cg-header {
     position: sticky;
     position: -webkit-sticky;

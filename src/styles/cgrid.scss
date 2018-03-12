@@ -44,6 +44,10 @@
                 background: $odd-row-bg-color;
             }
         }
+
+        .cg-pagination {
+            border: none;
+        }
     }
 
     @import './header.scss';

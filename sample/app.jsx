@@ -6,6 +6,7 @@ import HideGridLine from './components/hide-grid-line'
 import ColumnResizing from './components/column-resizing'
 import Pagination from './components/pagination'
 import CustomCell from './components/custom-cell'
+import ChangeRowHeight from './components/change-row-height'
 
 const rows = utils.rows
 const columns = utils.columns
@@ -36,6 +37,11 @@ export default class App extends Component {
             Name: 'Custom Cell',
             CGrid: React.createElement(CustomCell.CGrid, { rows: rows }),
             Code: CustomCell.Code
+        },
+        {
+            Name: 'Change Row Height',
+            CGrid: React.createElement(ChangeRowHeight.CGrid, { rows: rows }),
+            Code: ChangeRowHeight.Code
         }]
 
         return (

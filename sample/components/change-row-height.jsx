@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CGrid from './../../src'
 
-class HideGridLine extends Component {
+class ChangeRowHeight extends Component {
     constructor(props, context) {
         super(props, context)
     }
@@ -20,13 +20,12 @@ class HideGridLine extends Component {
             rows={rows}
             columns={columns}
             hideGridLine={true}
+            rowHeight={30}
         />
     }
 }
 
 const Code = `
-// You can override the row background-color in your css
-// .cg-row.odd, .cg-row.even 
 render() {
     const { rows } = this.props
     const columns = [
@@ -41,11 +40,12 @@ render() {
         rows={rows}
         columns={columns}
         hideGridLine={true}
+        rowHeight={30}
     />
 }
 `
 
 export default {
-    CGrid: HideGridLine,
+    CGrid: ChangeRowHeight,
     Code: Code
 }
