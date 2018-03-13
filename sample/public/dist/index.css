@@ -248,7 +248,8 @@ html, body {
       flex: 1;
       overflow: auto; }
       .cgrid-sample .right-part .btm-part pre {
-        margin: 0; }
+        margin: 0;
+        padding-left: 20px; }
       .cgrid-sample .right-part .btm-part .actions {
         height: 100%;
         width: 100%;
