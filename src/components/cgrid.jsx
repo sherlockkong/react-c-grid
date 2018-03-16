@@ -5,7 +5,6 @@ import Pagination from './pagination'
 import ProgressBar from './progress-bar'
 import Scrollbar from './scrollbar'
 import * as utils from '../utils'
-import 'stickyfilljs'
 
 utils.nodeListForEachPolyill()
 
@@ -16,9 +15,15 @@ utils.nodeListForEachPolyill()
  *      pagination: {}
  *      progressBar: {}
  *      rowHeight: number
+ *      autoFitWithColumnLabel: bool
  *      columnResizing: bool
  *      hideGridLine: bool
  *      onRenderCell: (key, row) => react element
+ *      measureLabelContext: {
+ *          fontSize: '13px',
+ *          fontWeight: 'bold',
+ *          fontFamily: 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
+ *      }
  * 
  *  Column Props:
  *      key: string
@@ -90,6 +95,10 @@ export default class CGrid extends React.Component {
             let width = -1
             if (col.minWidth) width = col.minWidth
             if (col.width && col.width > width) width = col.width
+            if (this.props.autoFitWithColumnLabel) {
+                let w = this.measureColumnLabel(col.label)
+                if (w > width) width = w
+            }
 
             if (width === -1) {
                 indexs.push(index)
@@ -170,6 +179,28 @@ export default class CGrid extends React.Component {
                 row.style.minWidth = this._header._dom.style.minWidth
                 row.style.width = this._header._dom.style.width
             })
+    }
+    measureColumnLabel = (label) => {
+        const { measureLabelContext } = this.props
+        let width = 0
+        if (typeof document !== 'undefined') {
+            const span = document.createElement('span');
+            span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px'
+            span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold'
+            span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
+            span.style.position = 'absolute'
+            span.style.top = -9999
+            span.textContent = label
+            document.body.appendChild(span)
+            width = span.clientWidth + 26
+
+            console.log(width)
+
+            document.body.removeChild(span)
+        } else {
+            width = 0
+        }
+        return width
     }
 
     render() {

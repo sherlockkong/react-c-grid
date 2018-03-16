@@ -7,6 +7,7 @@ import ColumnResizing from './components/column-resizing'
 import Pagination from './components/pagination'
 import CustomCell from './components/custom-cell'
 import ChangeRowHeight from './components/change-row-height'
+import AutoFitWidthColumnLabel from './components/auto-fit-with-column-label'
 
 const rows = utils.rows
 const columns = utils.columns
@@ -14,7 +15,7 @@ const columns = utils.columns
 export default class App extends Component {
     constructor(props, context) {
         super(props, context)
-        this.state = { selected: 2, type: 'sample' }
+        this.state = { selected: 0, type: 'sample' }
     }
 
     render() {
@@ -42,6 +43,11 @@ export default class App extends Component {
             Name: 'Change Row Height',
             CGrid: React.createElement(ChangeRowHeight.CGrid, { rows: rows }),
             Code: ChangeRowHeight.Code
+        },
+        {
+            Name: 'Auto Fit Width Column Label',
+            CGrid: React.createElement(AutoFitWidthColumnLabel.CGrid, { rows: rows }),
+            Code: AutoFitWidthColumnLabel.Code
         }]
 
         return (
