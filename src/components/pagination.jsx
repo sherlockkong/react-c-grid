@@ -123,8 +123,8 @@ export default class Pagination extends React.Component {
             className="cg-pagination"
             ref={ref => this._dom = ref}
         >
-            {this.renderPaging()}
-            {showCountMsg && this.renderCountMsg()}
+            {itemsCount > 0 && this.renderPaging()}
+            {itemsCount > 0 && showCountMsg && this.renderCountMsg()}
         </div>
     }
 }

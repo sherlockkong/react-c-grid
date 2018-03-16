@@ -27,7 +27,7 @@ export default class Header extends React.Component {
             {columns.map((col, index) =>
                 <div style={style} className={`cg-col-${index} cg-h-cell`} key={`col-${index}`} data-col-index={index} >
                     {col.label}
-                    {this.props.columnResizing && <ResizeBar colIndex={index} />}
+                    {this.props.columnResizing && <ResizeBar colIndex={index} column={col} />}
                 </div>
             )}
         </div>

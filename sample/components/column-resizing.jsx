@@ -10,7 +10,7 @@ class ColumnResizing extends Component {
         const { rows } = this.props
         const columns = [
             { key: 'name', label: 'Name' },
-            { key: 'email', label: 'Email' },
+            { key: 'email', label: 'Email', width: 300, minWidth: 200 },
             { key: 'phone', label: 'Phone' },
             { key: 'city', label: 'City' },
             { key: 'country', label: 'Country' }
@@ -29,7 +29,7 @@ render() {
     const { rows } = this.props
     const columns = [
         { key: 'name', label: 'Name' },
-        { key: 'email', label: 'Email' },
+        { key: 'email', label: 'Email', width: 300, minWidth: 200 },
         { key: 'phone', label: 'Phone' },
         { key: 'city', label: 'City' },
         { key: 'country', label: 'Country' }

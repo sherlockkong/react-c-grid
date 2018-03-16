@@ -4,6 +4,7 @@ import * as utils from './../utils'
 /**
  *  Props: 
  *      colIndex: number
+ *      column: Column
  */
 
 export default class ResizeBar extends React.Component {
@@ -25,9 +26,11 @@ export default class ResizeBar extends React.Component {
 
     onMouseDown = (e) => {
         if (e.button === 0) { // left button
+            let col = utils.parent(e.target, '.cg-h-cell')
             this._origin = {
                 x: e.screenX,
-                width: utils.parent(e.target, '.cg-h-cell').clientWidth
+                index: col.dataset.colIndex,
+                width: col.clientWidth
             }
         }
     }
@@ -42,12 +45,14 @@ export default class ResizeBar extends React.Component {
         }
     }
     onMouseMove = (e) => {
-        if (this._origin && this.currentWidth !== this._colMinWidth) {
+        let colMinWidth = this.props.column.minWidth ? this.props.column.minWidth : this._colMinWidth
+
+        if (this._origin && this.currentWidth !== colMinWidth) {
             let width = this._origin.width + (e.screenX - this._origin.x)
-            if (width < this._colMinWidth)
-                width = this._colMinWidth
-            let offset = width - this._origin.width,
-                newRowWidth = utils.EmptyHolderWidth,
+            if (width < colMinWidth)
+                width = colMinWidth
+
+            let newRowWidth = utils.EmptyHolderWidth,
                 colWidth = `${width}px`
 
             this._grid

@@ -14,7 +14,7 @@ const columns = utils.columns
 export default class App extends Component {
     constructor(props, context) {
         super(props, context)
-        this.state = { selected: 0, type: 'sample' }
+        this.state = { selected: 2, type: 'sample' }
     }
 
     render() {

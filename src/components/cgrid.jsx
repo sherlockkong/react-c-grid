@@ -63,7 +63,7 @@ export default class CGrid extends React.Component {
         this._body._dom.style.minHeight = minHeight
 
         // update cells width
-        let colWidths = this.getColWidths(), sum = 0
+        let colWidths = this.getColWidths(), sum = utils.EmptyHolderWidth
         colWidths.forEach((width, index) => {
             sum += width
             this._grid
@@ -87,8 +87,11 @@ export default class CGrid extends React.Component {
 
         let colWidths = [], indexs = [], w = 0
         columns.forEach((col, index) => {
-            let width = parseInt(col.width)
-            if (isNaN(width)) {
+            let width = -1
+            if (col.minWidth) width = col.minWidth
+            if (col.width && col.width > width) width = col.width
+
+            if (width === -1) {
                 indexs.push(index)
                 colWidths.push(undefined)
             } else {
@@ -99,7 +102,7 @@ export default class CGrid extends React.Component {
 
         if (indexs.length > 0) {
             let k = bodyWidth - w
-            if (k > 0) {
+            if (k > 0) { // All known width less than body width.
                 let l = parseInt(k / indexs.length)
                 indexs.forEach((index, i) => {
                     if (i === indexs.length - 1) {
