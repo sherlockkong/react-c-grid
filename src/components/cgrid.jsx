@@ -194,8 +194,6 @@ export default class CGrid extends React.Component {
             document.body.appendChild(span)
             width = span.clientWidth + 26
 
-            console.log(width)
-
             document.body.removeChild(span)
         } else {
             width = 0
