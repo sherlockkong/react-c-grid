@@ -28,7 +28,6 @@ class AutoFitWidthColumnLabel extends Component {
             rows={rows}
             columns={columns}
             autoFitWithColumnLabel={true}
-            columnResizing={true}
             measureLabelContext={measureLabelContext}
         />
     }
