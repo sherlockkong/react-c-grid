@@ -34,7 +34,7 @@
     .c-grid .cg-header .cg-h-cell {
       color: rgba(0, 0, 0, 0.54);
       width: 100px;
-      font-size: 12px;
+      font-size: 13px;
       position: relative;
       font-weight: bold; }
       .c-grid .cg-header .cg-h-cell:hover .col-resize-bar > .holder {

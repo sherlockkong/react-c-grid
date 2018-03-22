@@ -86,15 +86,17 @@ export default class CGrid extends React.Component {
             })
     }
     measureColumn = (column, span) => {
-        const { rows, autoFitWithColumnLabel, autoFit } = this.props
+        const { rows, autoFitWithColumnLabel, autoFit, measureLabelContext } = this.props
         let w = 0
         if (autoFit) {
             span.textContent = column.label
+            span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'normal'
+            let init = span.clientWidth
             w = rows.reduce((width, row) => {
                 span.textContent = row[column.key]
                 if (span.clientWidth > width) width = span.clientWidth
                 return width
-            }, span.clientWidth)
+            }, init)
         } else {
             if (autoFitWithColumnLabel) {
                 span.textContent = column.label
@@ -212,7 +214,7 @@ export default class CGrid extends React.Component {
         const { measureLabelContext } = this.props
         if (typeof document !== 'undefined') {
             const span = document.createElement('span');
-            span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '12px'
+            span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px'
             span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold'
             span.style.padding = measureLabelContext && measureLabelContext.padding ? measureLabelContext.padding : '0 8px'
             span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'

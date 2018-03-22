@@ -18,7 +18,7 @@ class AutoFitWidthColumnLabel extends Component {
         // This is the default value of the context.
         // If you do not change the header cell style, you do not need to pass this property.
         const measureLabelContext = {
-            fontSize: '12px',
+            fontSize: '13px',
             fontWeight: 'bold',
             padding: '0 8px',
             fontFamily: 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
@@ -28,6 +28,7 @@ class AutoFitWidthColumnLabel extends Component {
             rows={rows}
             columns={columns}
             autoFitWithColumnLabel={true}
+            columnResizing={true}
             measureLabelContext={measureLabelContext}
         />
     }
