@@ -8,6 +8,8 @@ import Pagination from './components/pagination'
 import CustomCell from './components/custom-cell'
 import ChangeRowHeight from './components/change-row-height'
 import AutoFitWidthColumnLabel from './components/auto-fit-with-column-label'
+import AutoFit from './components/auto-fit'
+import autoFit from './components/auto-fit';
 
 const rows = utils.rows
 const columns = utils.columns
@@ -43,6 +45,11 @@ export default class App extends Component {
             Name: 'Change Row Height',
             CGrid: React.createElement(ChangeRowHeight.CGrid, { rows: rows }),
             Code: ChangeRowHeight.Code
+        },
+        {
+            Name: 'Auto Fit',
+            CGrid: React.createElement(AutoFit.CGrid, { rows: rows }),
+            Code: AutoFit.Code
         },
         {
             Name: 'Auto Fit Width Column Label',

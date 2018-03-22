@@ -15,6 +15,7 @@ utils.nodeListForEachPolyill()
  *      pagination: {}
  *      progressBar: {}
  *      rowHeight: number
+ *      autoFit: bool // measure all text in rows.
  *      autoFitWithColumnLabel: bool
  *      columnResizing: bool
  *      hideGridLine: bool
@@ -84,19 +85,45 @@ export default class CGrid extends React.Component {
                 row.style.width = `${sum}px`
             })
     }
+    measureColumn = (column, span) => {
+        const { rows, autoFitWithColumnLabel, autoFit } = this.props
+        let w = 0
+        if (autoFit) {
+            span.textContent = column.label
+            w = rows.reduce((width, row) => {
+                span.textContent = row[column.key]
+                if (span.clientWidth > width) width = span.clientWidth
+                return width
+            }, span.clientWidth)
+        } else {
+            if (autoFitWithColumnLabel) {
+                span.textContent = column.label
+                w = span.clientWidth
+            }
+        }
+        w += 5 // add offset
+
+        if (column.maxWidthForAutoFit && w > column.maxWidthForAutoFit) {
+            w = column.maxWidthForAutoFit
+        }
+
+        return w
+    }
     getColWidths = () => {
         let bodyWidth = this._grid.clientWidth - utils.EmptyHolderWidth
         let columns = this.props.columns
             ? this.props.columns
             : utils.generateColumns(this.props.rows)
 
+        let span = this.appendMeasureSpan()
         let colWidths = [], indexs = [], w = 0
         columns.forEach((col, index) => {
             let width = -1
             if (col.minWidth) width = col.minWidth
             if (col.width && col.width > width) width = col.width
-            if (this.props.autoFitWithColumnLabel) {
-                let w = this.measureColumnLabel(col.label)
+
+            if (this.props.autoFitWithColumnLabel || this.props.autoFit) {
+                let w = this.measureColumn(col, span)
                 if (w > width) width = w
             }
 
@@ -108,6 +135,7 @@ export default class CGrid extends React.Component {
                 w += width
             }
         })
+        this.removeMessureSpan(span)
 
         if (indexs.length > 0) {
             let k = bodyWidth - w
@@ -180,25 +208,24 @@ export default class CGrid extends React.Component {
                 row.style.width = this._header._dom.style.width
             })
     }
-    measureColumnLabel = (label) => {
+    appendMeasureSpan = () => {
         const { measureLabelContext } = this.props
-        let width = 0
         if (typeof document !== 'undefined') {
             const span = document.createElement('span');
-            span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px'
+            span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '12px'
             span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold'
+            span.style.padding = measureLabelContext && measureLabelContext.padding ? measureLabelContext.padding : '0 8px'
             span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
+            span.style.whiteSpace = 'nowrap'
             span.style.position = 'absolute'
             span.style.top = -9999
-            span.textContent = label
             document.body.appendChild(span)
-            width = span.clientWidth + 26
 
-            document.body.removeChild(span)
-        } else {
-            width = 0
+            return span
         }
-        return width
+    }
+    removeMessureSpan = (span) => {
+        if (span) document.body.removeChild(span)
     }
 
     render() {
