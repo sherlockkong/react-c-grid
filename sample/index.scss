@@ -61,7 +61,7 @@ html, body {
 
             .item {
                 color: white;
-                height: 50px;
+                flex: 0 0 50px;
                 display: flex;
                 align-items: center;
                 padding-left: 20px;
@@ -72,26 +72,26 @@ html, body {
                     background: $mid-color;
                 }
             }
+        }
 
-            &:hover {
-                ::-webkit-scrollbar {
-                    display: initial;
-                }
-            }
-    
+        &:hover {
             ::-webkit-scrollbar {
-                display: none;
-                width: 5px;
-                height: 5px;
+                display: initial;
             }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+            width: 5px;
+            height: 5px;
+        }
     
-            ::-webkit-scrollbar-track {
-                background: rgba(0,0,0,.1);
-            }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,.1);
+        }
     
-            ::-webkit-scrollbar-thumb {
-                background: rgba(0,0,0,.1);
-            }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,.1);
         }
     }
 

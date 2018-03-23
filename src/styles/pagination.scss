@@ -10,6 +10,7 @@
     border-top: 1px solid $border-color;
     flex-direction: row-reverse;
     padding: 0 15px;
+    z-index: 100000;
 
     .count-msg {
         font-size: 12px;
@@ -19,7 +20,7 @@
 
     .cg-pages {
         display: flex;
-        font-size: 14px;
+        font-size: 13px;
         
         .cg-page, 
         .cg-page-button {
