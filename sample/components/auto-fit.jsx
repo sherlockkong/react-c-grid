@@ -60,7 +60,6 @@ return <CGrid
     hideGridLine={true}
     measureLabelContext={measureLabelContext}
 />
-}
 `
 
 export default {
