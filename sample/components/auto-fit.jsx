@@ -36,6 +36,14 @@ class AutoFit extends Component {
 }
 
 const Code = `
+const columns = [
+    { key: 'name', label: 'Name' },
+    { key: 'email', label: 'Email', maxWidthForAutoFit: 500 },
+    { key: 'company', label: 'Company' },
+    { key: 'city', label: 'City' },
+    { key: 'country', label: 'Country' }
+]
+
 // This is the default value of the context.
 // If you do not change the cell style, you do not need to pass this property.
 const measureLabelContext = {
