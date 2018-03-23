@@ -45,14 +45,23 @@ export default class CGrid extends React.Component {
     }
     componentDidUpdate = (nextProps) => {
         if (nextProps.columns &&
-            this.props.columns &&
-            nextProps.columns.length != this.props.columns.length) {
-            this.initGridSize()
+            this.props.columns) {
+            let diff = nextProps.columns.length != this.props.columns.length
+            if (!diff) {
+                for (let i = 0; i < nextProps.columns.length; i++)
+                    if (nextProps.columns[i].label !== this.props.columns[i].label) {
+                        diff = true
+                        break
+                    }
+            }
+            if (diff) this.initGridSize()
         }
 
         if (nextProps.rows &&
             this.props.rows &&
             nextProps.rows.length != this.props.rows.length) {
+
+            this.initGridSize()
             this.updateRowsSize()
         }
     }
@@ -87,23 +96,29 @@ export default class CGrid extends React.Component {
     }
     measureColumn = (column, span) => {
         const { rows, autoFitWithColumnLabel, autoFit, measureLabelContext } = this.props
+        const getWidth = (span) => {
+            let style = window.getComputedStyle(span)
+            return parseInt(style.width)
+        }
+
         let w = 0
         if (autoFit) {
             span.textContent = column.label
+            let init = getWidth(span)
             span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'normal'
-            let init = span.clientWidth
             w = rows.reduce((width, row) => {
                 span.textContent = row[column.key]
-                if (span.clientWidth > width) width = span.clientWidth
+                let nw = getWidth(span)
+                if (nw > width) width = nw
                 return width
             }, init)
         } else {
             if (autoFitWithColumnLabel) {
                 span.textContent = column.label
-                w = span.clientWidth
+                w = getWidth(span)
             }
         }
-        w += 5 // add offset
+        w += 15 // add offset
 
         if (column.maxWidthForAutoFit && w > column.maxWidthForAutoFit) {
             w = column.maxWidthForAutoFit
