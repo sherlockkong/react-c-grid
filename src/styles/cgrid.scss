@@ -1,4 +1,4 @@
-.c-grid {
+.c-grid-wrapper {
     $row-height: 40px;
     $row-color: rgba(0,0,0,.87);
     $row-bg-color: white;
@@ -9,50 +9,56 @@
     $header-bg-color: white;
     $border-color :rgb(224,224,224);
 
-    font-family: Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif;
-    border: 1px solid $border-color;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background: white;
-
-    div {
-        box-sizing: border-box;
-    }
-
-    .cg-row {
-        border-bottom: 1px solid $border-color;
+    .c-grid {
+        font-family: Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif;
+        border: 1px solid $border-color;
+        width: 100%;
         overflow: hidden;
-
-        .cg-h-cell, .cg-cell {
-            padding: 0 8px;
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+        position: relative;
+        background: white;
+    
+        div {
+            box-sizing: border-box;
         }
-    }
-
-    &.hide-grid-line {
-        border: none;
-
+    
         .cg-row {
-            border: none;
-
-            &.odd {
-                background: $odd-row-bg-color;
+            border-bottom: 1px solid $border-color;
+            overflow: hidden;
+    
+            .cg-h-cell, .cg-cell {
+                padding: 0 8px;
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
+    
+        @import './header.scss';
+        @import './body.scss';
+        @import './progress-bar.scss';
+        @import './scrollbar.scss';
+    }
 
+    @import './pagination.scss';
+
+    &.hide-grid-line {
+        .c-grid {
+
+            border: none;
+            
+            .cg-row {
+                border: none;
+                
+                &.odd {
+                    background: $odd-row-bg-color;
+                }
+            }
+            
+        }
+        
         .cg-pagination {
             border: none;
         }
     }
-
-    @import './header.scss';
-    @import './body.scss';
-    @import './pagination.scss';
-    @import './progress-bar.scss';
-    @import './scrollbar.scss';
 }

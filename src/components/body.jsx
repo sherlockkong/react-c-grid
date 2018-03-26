@@ -26,15 +26,18 @@ export default class Body extends React.Component {
             lineHeight: `${height}px`
         }
 
-        return rows.map((row, rIndex) =>
-            <div className={`cg-row ${(rIndex + 1) % 2 == 0 ? 'even' : 'odd'}`} style={style} key={`cg-row-${rIndex}`}>
-                {columns.map((col, index) =>
-                    <div style={style} className={`cg-col-${index} cg-cell`} key={`cell-${rIndex}-${index}`}>
-                        {this.renderCell(col.key, row)}
-                    </div>
-                )}
-            </div>
-        )
+        let domRows = [this.renderPlaceHolderRow(style)]
+            .concat(rows.map((row, rIndex) =>
+                <div className={`cg-row ${(rIndex + 1) % 2 == 0 ? 'even' : 'odd'}`} style={style} key={`cg-row-${rIndex}`}>
+                    {columns.map((col, index) =>
+                        <div style={style} className={`cg-col-${index} cg-cell`} key={`cell-${rIndex}-${index}`}>
+                            {this.renderCell(col.key, row)}
+                        </div>
+                    )}
+                </div>
+            ))
+
+        return domRows
     }
     renderCell = (key, row) => {
         const { onRenderCell } = this.props
@@ -44,6 +47,14 @@ export default class Body extends React.Component {
         } else {
             return row[key]
         }
+    }
+    renderPlaceHolderRow = (style) => {
+        return <div
+            style={style}
+            className='place-holder-row'
+            key='place-holder-row'
+        >
+        </div>
     }
 
     render() {

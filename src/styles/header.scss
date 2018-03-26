@@ -1,6 +1,6 @@
 .cg-header {
-    position: sticky;
-    position: -webkit-sticky;
+    position: absolute;
+    z-index: 100;
     top: 0;
 
     .cg-row {

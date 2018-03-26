@@ -60,6 +60,8 @@ export default class Scrollbar extends React.Component {
             window.clearTimeout(this.hideScrollbarTimerId)
         }
         this.hideScrollbar()
+
+        this.props.onScroll(this._container.scrollLeft)
     }
 
     updateScrollBarSize = () => {

@@ -244,16 +244,27 @@ export default class CGrid extends React.Component {
     removeMessureSpan = (span) => {
         if (span) document.body.removeChild(span)
     }
+    onScroll = (scrollLeft) => {
+        this._header._dom.style.left = `${-scrollLeft}px`
+    }
 
     render() {
         const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, hideGridLine } = this.props
 
+        const style = {
+            height: `${pagination ? 'calc(100% - 50px)' : '100%'}`
+        }
+
         return <div
-            id={this._gridId}
-            className={`c-grid ${hideGridLine ? 'hide-grid-line' : ''}`}
-            ref={ref => this._grid = ref}
+            className={`c-grid-wrapper ${hideGridLine ? 'hide-grid-line' : ''}`}
+            style={{ width: '100%', height: '100%' }}
         >
-            <Scrollbar>
+            <div
+                id={this._gridId}
+                className='c-grid'
+                ref={ref => this._grid = ref}
+                style={style}
+            >
                 <Header
                     gridId={this._gridId}
                     rows={rows}
@@ -263,17 +274,22 @@ export default class CGrid extends React.Component {
                     ref={ref => this._header = ref}
                 />
 
-                <Body
-                    rows={rows}
-                    columns={columns}
-                    rowHeight={rowHeight}
-                    ref={ref => this._body = ref}
-                    onRenderCell={onRenderCell}
-                />
+                <Scrollbar
+                    onScroll={this.onScroll}
+                >
+                    <Body
+                        rows={rows}
+                        columns={columns}
+                        rowHeight={rowHeight}
+                        ref={ref => this._body = ref}
+                        onRenderCell={onRenderCell}
+                    />
 
-                {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} rowHeight={rowHeight} />}
-                {progressBar && <ProgressBar {...progressBar} />}
-            </Scrollbar>
+                    {progressBar && <ProgressBar {...progressBar} />}
+                </Scrollbar>
+            </div>
+
+            {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} rowHeight={rowHeight} />}
         </div>
     }
 }

@@ -50,6 +50,7 @@ class Pagination extends Component {
             rows={subRows}
             columns={columns}
             pagination={pagination}
+            columnResizing={true}
             progressBar={this.state.progressBar}
         />
     }
