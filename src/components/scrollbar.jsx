@@ -72,6 +72,7 @@ export default class Scrollbar extends React.Component {
 
         // horizontal scrollbar
         let hBarWidth = Math.ceil(this._container.clientWidth / (this._container.scrollWidth / this._container.clientWidth))
+
         hBarWidth = hBarWidth === this._container.clientWidth ? 0 : hBarWidth
         this._hBarContainer.style.display = hBarWidth === 0 ? 'none' : 'block'
 
@@ -101,13 +102,13 @@ export default class Scrollbar extends React.Component {
     }
     onVBarMouseDown = (e) => {
         let rect = this._vBar.getBoundingClientRect()
-        this._mouseDownOffsetY = e.clientY - rect.y
+        this._mouseDownOffsetY = e.clientY - rect.top
         e.preventDefault()
         e.stopPropagation()
     }
     updateVBarPosition = (clientY) => {
         let rect = this._vBarContainer.getBoundingClientRect()
-        let offset = Math.ceil(this._container.scrollHeight / rect.height * (clientY - rect.y))
+        let offset = Math.ceil(this._container.scrollHeight / rect.height * (clientY - rect.top))
         this._container.scrollTop = offset
     }
     renderVerticalScrollbar = () => {
@@ -134,13 +135,13 @@ export default class Scrollbar extends React.Component {
     }
     onHBarMouseDown = (e) => {
         let rect = this._hBar.getBoundingClientRect()
-        this._mouseDownOffsetX = e.clientX - rect.x
+        this._mouseDownOffsetX = e.clientX - rect.left
         e.preventDefault()
         e.stopPropagation()
     }
     updateHBarPosition = (clientX) => {
         let rect = this._hBarContainer.getBoundingClientRect()
-        let offset = Math.ceil(this._container.scrollWidth / rect.width * (clientX - rect.x))
+        let offset = Math.ceil(this._container.scrollWidth / rect.width * (clientX - rect.left))
         this._container.scrollLeft = offset
     }
     renderHorizontalScrollbar = () => {

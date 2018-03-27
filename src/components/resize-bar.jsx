@@ -74,7 +74,15 @@ export default class ResizeBar extends React.Component {
                 .querySelectorAll(`.cg-row,.cg-header`)
                 .forEach(elem => elem.style.width = rowWdith)
 
-            document.dispatchEvent(new Event('cgrid-column-resizing'));
+            var isIE = /*@cc_on!@*/false || !!document.documentMode
+            if(isIE) {
+                var event = document.createEvent('Event')
+                event.initEvent('cgrid-column-resizing', false, true)
+                document.dispatchEvent(event)
+
+            } else {
+                document.dispatchEvent(new Event('cgrid-column-resizing'))
+            }
         }
     }
 
