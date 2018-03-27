@@ -257,7 +257,7 @@ export default class CGrid extends React.Component {
 
         return <div
             className={`c-grid-wrapper ${hideGridLine ? 'hide-grid-line' : ''}`}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: '100%', height: '100%', position: 'relative' }}
         >
             <div
                 id={this._gridId}
@@ -289,7 +289,7 @@ export default class CGrid extends React.Component {
                 </Scrollbar>
             </div>
 
-            {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} rowHeight={rowHeight} />}
+            {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} />}
         </div>
     }
 }

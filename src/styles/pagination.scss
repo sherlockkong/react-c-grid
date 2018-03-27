@@ -4,8 +4,11 @@
     height: 50px;
     display: flex;
     align-items: center;
+    
     bottom: 0;
     right: 0;
+    left: 0;
+
     border-top: 1px solid $border-color;
     flex-direction: row-reverse;
     padding: 0 15px;
