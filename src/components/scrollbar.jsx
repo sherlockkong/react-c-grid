@@ -72,7 +72,6 @@ export default class Scrollbar extends React.Component {
 
         // horizontal scrollbar
         let hBarWidth = Math.ceil(this._container.clientWidth / (this._container.scrollWidth / this._container.clientWidth))
-
         hBarWidth = hBarWidth === this._container.clientWidth ? 0 : hBarWidth
         this._hBarContainer.style.display = hBarWidth === 0 ? 'none' : 'block'
 
