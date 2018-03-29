@@ -1,6 +1,6 @@
 {
   "name": "react-c-grid",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "React data grid",
   "main": "lib/index.js",
   "author": "SherlockKong",
