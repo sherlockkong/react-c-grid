@@ -46,6 +46,12 @@ npm run wds
 npm start
 ```
 
+## Encourage me
+
+If you are willing to ask me for a coffee, I will be very happy.<br/>
+Scan the following WeChat QR code.
+
+<img src="http://www.sherlockkong.com/images/payme.jpeg" width="300" height="379">
 
 ## License
 
