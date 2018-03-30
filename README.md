@@ -46,7 +46,7 @@ npm run wds
 npm start
 ```
 
-## Encourage me
+## Reward
 
 If you are willing to pay me a cup of coffee, I will be very happy.<br/>
 Scan the following WeChat QR code.
