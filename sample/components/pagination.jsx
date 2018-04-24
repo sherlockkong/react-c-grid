@@ -9,8 +9,8 @@ class Pagination extends Component {
     }
 
     selectedPageChanged = (selected) => {
-        this.setState({ selected: selected })
         this.setState({
+            selected: selected,
             progressBar: {
                 show: true,
                 color: 'rgb(29,169,240)',
@@ -19,6 +19,7 @@ class Pagination extends Component {
         })
 
         setTimeout(() => {
+            // hide progressBar after fetch data from server.
             this.setState({ progressBar: { show: false } })
         }, 1000)
     }
@@ -58,8 +59,8 @@ class Pagination extends Component {
 
 const Code = `
 selectedPageChanged = (selected) => {
-    this.setState({ selected: selected })
     this.setState({
+        selected: selected,
         progressBar: {
             show: true,
             color: 'rgb(29,169,240)',
@@ -68,6 +69,7 @@ selectedPageChanged = (selected) => {
     })
 
     setTimeout(() => {
+        // hide progressBar after fetch data from server.
         this.setState({ progressBar: { show: false } })
     }, 1000)
 }
@@ -95,9 +97,11 @@ render() {
         this.state.selected * pagination.pageSize)
 
     return <CGrid
+        hideGridLine={true}
         rows={subRows}
         columns={columns}
         pagination={pagination}
+        columnResizing={true}
         progressBar={this.state.progressBar}
     />
 }
