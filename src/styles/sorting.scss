@@ -1,0 +1,17 @@
+.sort-hd {
+    position: absolute;
+    top: 0;
+    width: 18px;
+    right: 5px;
+    height: 100%;
+    z-index: 100000;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    display: none;
+    
+    &.sorting {
+        display: flex;
+        align-items: center;
+    }
+}

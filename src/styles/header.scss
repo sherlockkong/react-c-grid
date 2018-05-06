@@ -13,13 +13,27 @@
         font-size: 13px;
         position: relative;
         font-weight: bold;
+        transition: color .3s;
 
         &:hover {
             .col-resize-bar > .holder {
                 opacity: 1;
             }
+
+            &.can-sort {
+                color:  $header-can-sort-highlight-color;
+            }
+        }
+
+        &.can-sort {
+            cursor: pointer;
+        }
+
+        &.sorting {
+            color:  $header-can-sort-highlight-color;
         }
 
         @import './resize-bar.scss';
+        @import './sorting.scss';
     }
 }

@@ -26,22 +26,28 @@ class ChangeRowHeight extends Component {
 }
 
 const Code = `
-render() {
-    const { rows } = this.props
-    const columns = [
-        { key: 'name', label: 'Name' },
-        { key: 'email', label: 'Email', width: 300 },
-        { key: 'company', label: 'Company' },
-        { key: 'city', label: 'City' },
-        { key: 'country', label: 'Country' }
-    ]
+class ChangeRowHeight extends Component {
+    constructor(props, context) {
+        super(props, context)
+    }
 
-    return <CGrid
-        rows={rows}
-        columns={columns}
-        hideGridLine={true}
-        rowHeight={30}
-    />
+    render() {
+        const { rows } = this.props
+        const columns = [
+            { key: 'name', label: 'Name' },
+            { key: 'email', label: 'Email', width: 300 },
+            { key: 'company', label: 'Company' },
+            { key: 'city', label: 'City' },
+            { key: 'country', label: 'Country' }
+        ]
+
+        return <CGrid
+            rows={rows}
+            columns={columns}
+            hideGridLine={true}
+            rowHeight={30}
+        />
+    }
 }
 `
 

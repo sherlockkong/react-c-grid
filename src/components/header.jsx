@@ -1,5 +1,6 @@
 import * as React from 'react'
 import ResizeBar from './resize-bar'
+import Sorting from './sorting'
 import * as utils from './../utils'
 
 /**
@@ -25,9 +26,15 @@ export default class Header extends React.Component {
 
         return <div className="cg-row" style={style}>
             {columns.map((col, index) =>
-                <div style={style} className={`cg-col-${index} cg-h-cell`} key={`col-${index}`} data-col-index={index} >
+                <div
+                    style={style}
+                    className={`cg-col-${index} cg-h-cell ${col.sorting ? 'can-sort' : ''}`}
+                    key={`col-${index}`}
+                    data-col-index={index}
+                >
                     {col.label}
                     {this.props.columnResizing && <ResizeBar colIndex={index} column={col} />}
+                    {col.sorting && <Sorting colIndex={index} column={col} />}
                 </div>
             )}
         </div>

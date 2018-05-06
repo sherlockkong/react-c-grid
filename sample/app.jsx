@@ -9,7 +9,7 @@ import CustomCell from './components/custom-cell'
 import ChangeRowHeight from './components/change-row-height'
 import AutoFitWidthColumnLabel from './components/auto-fit-with-column-label'
 import AutoFit from './components/auto-fit'
-import autoFit from './components/auto-fit';
+import Sorting from './components/sorting'
 
 const rows = utils.rows
 const columns = utils.columns
@@ -32,11 +32,6 @@ export default class App extends Component {
             Code: ColumnResizing.Code
         },
         {
-            Name: 'Pagination',
-            CGrid: React.createElement(Pagination.CGrid, { rows: rows }),
-            Code: Pagination.Code
-        },
-        {
             Name: 'Custom Cell',
             CGrid: React.createElement(CustomCell.CGrid, { rows: rows }),
             Code: CustomCell.Code
@@ -55,6 +50,16 @@ export default class App extends Component {
             Name: 'Auto Fit Width Column Label',
             CGrid: React.createElement(AutoFitWidthColumnLabel.CGrid, { rows: rows }),
             Code: AutoFitWidthColumnLabel.Code
+        },
+        {
+            Name: 'Sorting',
+            CGrid: React.createElement(Sorting.CGrid, { rows: rows }),
+            Code: Sorting.Code
+        },
+        {
+            Name: 'Pagination',
+            CGrid: React.createElement(Pagination.CGrid, { rows: rows }),
+            Code: Pagination.Code
         }]
 
         return (
@@ -63,21 +68,19 @@ export default class App extends Component {
                 <div className='left-part'>
                     <div className='top-part'>CGrid sample</div>
                     <div className='btm-part'>
-                        {
-                            items.map((item, index) => {
-                                return <div
-                                    className={`item ${items[this.state.selected].Name === item.Name ? 'selected' : ''}`}
-                                    data-index={index}
-                                    key={item.Name}
-                                    onClick={(e) => {
-                                        this.setState({ selected: e.target.dataset.index })
-                                        this.setState({ type: 'sample' })
-                                    }}
-                                >
-                                    {item.Name}
-                                </div>
-                            })
-                        }
+                        {items.map((item, index) => {
+                            return <div
+                                className={`item ${items[this.state.selected].Name === item.Name ? 'selected' : ''}`}
+                                data-index={index}
+                                key={item.Name}
+                                onClick={(e) => {
+                                    this.setState({ selected: e.target.dataset.index })
+                                    this.setState({ type: 'sample' })
+                                }}
+                            >
+                                {item.Name}
+                            </div>
+                        })}
                     </div>
                 </div>
                 <div className='right-part'>

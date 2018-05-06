@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import CGrid from './../../src'
 
+// You can override the row background-color in your css
+// .cg-row.odd, .cg-row.even 
 class HideGridLine extends Component {
     constructor(props, context) {
         super(props, context)
@@ -27,21 +29,27 @@ class HideGridLine extends Component {
 const Code = `
 // You can override the row background-color in your css
 // .cg-row.odd, .cg-row.even 
-render() {
-    const { rows } = this.props
-    const columns = [
-        { key: 'name', label: 'Name' },
-        { key: 'email', label: 'Email', width: 300 },
-        { key: 'company', label: 'Company' },
-        { key: 'city', label: 'City' },
-        { key: 'country', label: 'Country' }
-    ]
+class HideGridLine extends Component {
+    constructor(props, context) {
+        super(props, context)
+    }
 
-    return <CGrid
-        rows={rows}
-        columns={columns}
-        hideGridLine={true}
-    />
+    render() {
+        const { rows } = this.props
+        const columns = [
+            { key: 'name', label: 'Name' },
+            { key: 'email', label: 'Email', width: 300 },
+            { key: 'company', label: 'Company' },
+            { key: 'city', label: 'City' },
+            { key: 'country', label: 'Country' }
+        ]
+
+        return <CGrid
+            rows={rows}
+            columns={columns}
+            hideGridLine={true}
+        />
+    }
 }
 `
 
