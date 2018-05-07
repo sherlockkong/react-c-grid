@@ -4,7 +4,8 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: white; }
+  background: white;
+  text-align: left; }
   .c-grid-wrapper .c-grid div {
     box-sizing: border-box; }
   .c-grid-wrapper .c-grid .cg-row {
