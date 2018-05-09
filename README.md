@@ -48,7 +48,7 @@ npm start
 
 ## Reward
 
-If you are willing to pay me a cup of coffee, please scan the following WeChat QR code.<br/>
+Please scan the following WeChat QR code.<br/>
 
 <img src="http://www.sherlockkong.com/images/payme.jpeg" width="300" height="379">
 
