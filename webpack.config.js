@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
     config.devtool = 'inline-source-map'
     config.devServer = {
         contentBase: './sample/public/dist',
-        port: 7777,
+        port: 7878,
         hot: true
     }
 }

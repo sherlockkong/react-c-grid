@@ -34,14 +34,15 @@ export default class Scrollbar extends React.Component {
         document.removeEventListener('mousemove', this.onDocumentMouseMove)
     }
     onWindowResize = () => {
-        setTimeout(this.updateScrollBarSize, 1)
+        this.updateScrollBarSize()
     }
     onColumnResize = () => {
-        setTimeout(this.updateScrollBarSize, 1)
+        this.updateScrollBarSize()
     }
     onDocumentMouseUp = (e) => {
         this._mouseDownOffsetY = undefined
         this._mouseDownOffsetX = undefined
+        this.hideScrollbar()
     }
     onDocumentMouseMove = (e) => {
         if (this._mouseDownOffsetY !== undefined) {
@@ -55,28 +56,28 @@ export default class Scrollbar extends React.Component {
     onScroll = (e) => {
         this.showScrollbar()
         this.updateScrollbarPostion()
-
-        if (this._hideScrollbarTimerId !== undefined) {
-            window.clearTimeout(this.hideScrollbarTimerId)
-        }
         this.hideScrollbar()
 
         this.props.onScroll(this._container.scrollLeft)
     }
 
     updateScrollBarSize = () => {
-        // vertical scrollbar
-        let vBarHeight = Math.ceil(this._container.clientHeight / (this._container.scrollHeight / this._container.clientHeight))
-        vBarHeight = vBarHeight === this._container.clientHeight ? 0 : vBarHeight
-        this._vBarContainer.style.display = vBarHeight === 0 ? 'none' : 'block'
+        const updateBarSize = () => {
+            // vertical scrollbar
+            let vBarHeight = Math.ceil(this._container.clientHeight / (this._container.scrollHeight / this._container.clientHeight))
+            vBarHeight = vBarHeight === this._container.clientHeight ? 0 : vBarHeight
+            this._vBarContainer.style.display = vBarHeight === 0 ? 'none' : 'block'
 
-        // horizontal scrollbar
-        let hBarWidth = Math.ceil(this._container.clientWidth / (this._container.scrollWidth / this._container.clientWidth))
-        hBarWidth = hBarWidth === this._container.clientWidth ? 0 : hBarWidth
-        this._hBarContainer.style.display = hBarWidth === 0 ? 'none' : 'block'
+            // horizontal scrollbar
+            let hBarWidth = Math.ceil(this._container.clientWidth / (this._container.scrollWidth / this._container.clientWidth))
+            hBarWidth = hBarWidth === this._container.clientWidth ? 0 : hBarWidth
+            this._hBarContainer.style.display = hBarWidth === 0 ? 'none' : 'block'
 
-        this._vBar.style.height = `${vBarHeight - (hBarWidth !== 0 ? this._hBarContainer.clientHeight : 0)}px`
-        this._hBar.style.width = `${hBarWidth - (vBarHeight !== 0 ? this._vBarContainer.clientWidth : 0)}px`
+            this._vBar.style.height = `${vBarHeight - (hBarWidth !== 0 ? this._hBarContainer.clientHeight : 0)}px`
+            this._hBar.style.width = `${hBarWidth - (vBarHeight !== 0 ? this._vBarContainer.clientWidth : 0)}px`
+        }
+
+        setTimeout(updateBarSize, 1)
     }
     updateScrollbarPostion = () => {
         let top = Math.ceil(this._container.scrollTop / this._container.scrollHeight * this._container.clientHeight)
@@ -167,12 +168,22 @@ export default class Scrollbar extends React.Component {
         this._hBar.style.opacity = 1
     }
     hideScrollbar = () => {
+        if (this._hideScrollbarTimerId !== undefined) {
+            window.clearTimeout(this.hideScrollbarTimerId)
+        }
+
         this._hideScrollbarTimerId = setTimeout(() => {
-            if (this._vBar) this._vBar.style.opacity = 0
-            if (this._hBar) this._hBar.style.opacity = 0
+            if (this._mouseDownOffsetY === undefined && this._mouseDownOffsetX === undefined) {
+                if (this._vBar) this._vBar.style.opacity = 0
+                if (this._hBar) this._hBar.style.opacity = 0
+            }
         }, 500)
     }
 
+    onMouseEnter = () => {
+        this.showScrollbar()
+        this.hideScrollbar()
+    }
     onMouseLeave = (e) => {
         if (this._mouseDownOffsetX === undefined &&
             this._mouseDownOffsetY === undefined &&
@@ -206,7 +217,7 @@ export default class Scrollbar extends React.Component {
             <div style={containerStyle}
                 ref={ref => this._container = ref}
                 onScroll={this.onScroll}
-                onMouseEnter={this.showScrollbar}
+                onMouseEnter={this.onMouseEnter}
                 onMouseLeave={this.onMouseLeave}
             >
                 {this.props.children && this.props.children}
