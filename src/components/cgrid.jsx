@@ -178,6 +178,8 @@ export default class CGrid extends React.Component {
             rowWidth = parseInt(row.style.width),
             cells = row.querySelectorAll('.cg-h-cell')
 
+        if (cells.length === 0) return
+
         // update body size
         let bodyWidth = `${this._grid.clientWidth}px`,
             paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
