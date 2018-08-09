@@ -16,7 +16,8 @@
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
-      text-overflow: ellipsis; }
+      text-overflow: ellipsis;
+      vertical-align: middle; }
   .c-grid-wrapper .c-grid .cg-header {
     position: absolute;
     z-index: 100;
