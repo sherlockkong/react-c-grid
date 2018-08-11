@@ -1,7 +1,7 @@
 react-c-grid
 =========================
 
-[Demo](http://www.sherlockkong.com/) 
+[Demo](http://grid.sherlockkong.com/) 
 
 ## Installation
 ```bash
