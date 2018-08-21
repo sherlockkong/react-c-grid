@@ -1,17 +1,31 @@
-.sort-hd {
-    position: absolute;
-    top: 0;
-    width: 18px;
-    right: 5px;
-    height: 100%;
-    z-index: 100000;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    display: none;
-    
+.cg-h-cell {
+    .sort-hd {
+        position: absolute;
+        top: 0;
+        width: 18px;
+        right: 5px;
+        height: 100%;
+        z-index: 100000;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        display: none;
+
+        svg {
+            transition: all .3s;
+        }
+
+        &.desc {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
     &.sorting {
-        display: flex;
-        align-items: center;
+        .sort-hd {
+            display: flex;
+            align-items: center;
+        }
     }
 }

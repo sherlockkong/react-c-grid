@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import * as utils from './utils'
 import './index.scss'
 
-import HideGridLine from './components/hide-grid-line'
 import ColumnResizing from './components/column-resizing'
 import Pagination from './components/pagination'
 import CustomCell from './components/custom-cell'
@@ -22,15 +21,10 @@ export default class App extends Component {
 
     render() {
         let items = [{
-            Name: 'Hide Grid Line',
-            CGrid: React.createElement(HideGridLine.CGrid, { rows: rows }),
-            Code: HideGridLine.Code
-        },
-        {
             Name: 'Columns Resizing',
             CGrid: React.createElement(ColumnResizing.CGrid, { rows: rows }),
             Code: ColumnResizing.Code
-        },
+        }, 
         {
             Name: 'Custom Cell',
             CGrid: React.createElement(CustomCell.CGrid, { rows: rows }),

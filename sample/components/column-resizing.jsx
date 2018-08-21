@@ -20,6 +20,7 @@ class ColumnResizing extends Component {
             rows={rows}
             columns={columns}
             columnResizing={true}
+            hideGridLine={true}
         />
     }
 }

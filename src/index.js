@@ -1,3 +1,3 @@
-import CGrid from './components/cgrid'
+export { default } from './components/cgrid'
 
-export default CGrid
+
