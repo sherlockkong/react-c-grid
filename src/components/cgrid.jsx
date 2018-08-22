@@ -1,12 +1,14 @@
-import * as React from 'react'
-import Header from './header'
-import Body from './body'
-import Pagination from './pagination'
-import ProgressBar from './progress-bar'
-import Scrollbar from './scrollbar'
-import * as utils from '../utils'
+import * as React from 'react';
 
-utils.nodeListForEachPolyill()
+import Header from './header';
+import Body from './body';
+import Pagination from './pagination';
+import ProgressBar from './progress-bar';
+import Scrollbar from './scrollbar';
+
+import * as utils from '../utils';
+
+utils.nodeListForEachPolyill();
 
 /**
  *  Props: 
@@ -33,265 +35,259 @@ utils.nodeListForEachPolyill()
  */
 
 export default class CGrid extends React.Component {
-    constructor(props, context) {
-        super(props, context)
+	constructor(props, context) {
+		super(props, context);
 
-        this._gridId = `cgrid-${Math.round(1000000 * Math.random())}`
-    }
+		this._gridId = `cgrid-${Math.round(1000000 * Math.random())}`;
+	}
 
-    componentDidMount = () => {
-        this.initGridSize()
-        window.addEventListener('resize', this.updateGridSize)
-    }
-    componentDidUpdate = (nextProps) => {
-        if (nextProps.columns &&
-            this.props.columns) {
-            let diff = nextProps.columns.length != this.props.columns.length
-            if (!diff) {
-                for (let i = 0; i < nextProps.columns.length; i++)
-                    if (nextProps.columns[i].label !== this.props.columns[i].label) {
-                        diff = true
-                        break
-                    }
-            }
-            if (diff) this.initGridSize()
-        }
+	componentDidMount = () => {
+		this.initGridSize();
+		window.addEventListener('resize', this.updateGridSize);
+	}
+	componentDidUpdate = (nextProps) => {
+		if (nextProps.columns && this.props.columns) {
+			let hasDiff = nextProps.columns.length != this.props.columns.length;
 
-        if (nextProps.rows &&
-            this.props.rows &&
-            nextProps.rows.length != this.props.rows.length) {
+			if (!hasDiff) for (let i = 0; i < nextProps.columns.length; i++) {
+				if (nextProps.columns[i].label !== this.props.columns[i].label) {
+					hasDiff = true; break;
+				}
+			}
 
-            this.initGridSize()
-            this.updateRowsSize()
-        }
-    }
-    componentWillUnmount = () => {
-        window.removeEventListener('resize', this.updateGridSize)
-    }
+			if (hasDiff) this.initGridSize();
+		}
 
-    initGridSize = () => {
-        // update body size
-        let minWidth = `${this._grid.clientWidth}px`,
-            paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
-            minHeight = `${this._grid.clientHeight - this._header._dom.clientHeight - paginationHeight}px`
-        this._body._dom.style.minWidth = minWidth
-        this._body._dom.style.minHeight = minHeight
+		if (nextProps.rows && this.props.rows &&
+			nextProps.rows.length != this.props.rows.length) {
 
-        // update cells width
-        let colWidths = this.getColWidths(), sum = utils.EmptyHolderWidth
-        colWidths.forEach((width, index) => {
-            sum += width
-            this._grid
-                .querySelectorAll(`.cg-col-${index}`)
-                .forEach(dom => dom.style.width = `${width}px`)
-        })
+			this.initGridSize();
+			this.updateRowsSize();
+		}
+	}
+	componentWillUnmount = () => {
+		window.removeEventListener('resize', this.updateGridSize);
+	}
 
-        // update row size
-        this._grid
-            .querySelectorAll('.cg-row,.cg-header')
-            .forEach(row => {
-                row.style.minWidth = minWidth
-                row.style.width = `${sum}px`
-            })
-    }
-    measureColumn = (column, span) => {
-        const { rows, autoFitWithColumnLabel, autoFit, measureLabelContext } = this.props
-        const getWidth = (span) => {
-            let style = window.getComputedStyle(span)
-            return parseInt(style.width)
-        }
+	initGridSize = () => {
+		// update body size
+		let minWidth = `${this._grid.clientWidth}px`,
+			paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
+			minHeight = `${this._grid.clientHeight - this._header._dom.clientHeight - paginationHeight}px`;
+		this._body._dom.style.minWidth = minWidth;
+		this._body._dom.style.minHeight = minHeight;
 
-        let w = 0
-        if (autoFit) {
-            span.textContent = column.label
-            let init = getWidth(span)
-            span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'normal'
-            w = rows.reduce((width, row) => {
-                span.textContent = row[column.key]
-                let nw = getWidth(span)
-                if (nw > width) width = nw
-                return width
-            }, init)
-        } else {
-            if (autoFitWithColumnLabel) {
-                span.textContent = column.label
-                w = getWidth(span)
-            }
-        }
-        w += 15 // add offset
+		// update cells width
+		let colWidths = this.getColWidths(), sum = utils.EmptyHolderWidth;
+		colWidths.forEach((width, index) => {
+			sum += width;
+			this._grid
+				.querySelectorAll(`.cg-col-${index}`)
+				.forEach(dom => dom.style.width = `${width}px`);
+		})
 
-        if (column.maxWidthForAutoFit && w > column.maxWidthForAutoFit) {
-            w = column.maxWidthForAutoFit
-        }
+		// update row size
+		this._grid
+			.querySelectorAll('.cg-row,.cg-header')
+			.forEach(row => {
+				row.style.minWidth = minWidth
+				row.style.width = `${sum}px`
+			});
+	}
+	measureColumn = (column, span) => {
+		const { rows, autoFitWithColumnLabel, autoFit, measureLabelContext } = this.props;
+		const getWidth = (span) => {
+			let style = window.getComputedStyle(span);
+			return parseInt(style.width);
+		}
 
-        return w
-    }
-    getColWidths = () => {
-        let bodyWidth = this._grid.clientWidth - utils.EmptyHolderWidth
-        let columns = this.props.columns
-            ? this.props.columns
-            : utils.generateColumns(this.props.rows)
+		let w = 0;
+		if (autoFit) {
+			span.textContent = column.label;
+			let init = getWidth(span);
+			span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'normal';
+			w = rows.reduce((width, row) => {
+				span.textContent = row[column.key];
+				let nw = getWidth(span);
+				if (nw > width) width = nw;
+				return width;
+			}, init);
+		}
+		else if (autoFitWithColumnLabel) {
+			span.textContent = column.label;
+			w = getWidth(span);
+		}
 
-        let span = this.appendMeasureSpan()
-        let colWidths = [], indexs = [], w = 0
-        columns.forEach((col, index) => {
-            let width = -1
-            if (col.minWidth) width = col.minWidth
-            if (col.width && col.width > width) width = col.width
+		w += 15; // add offset
 
-            if (this.props.autoFitWithColumnLabel || this.props.autoFit) {
-                let w = this.measureColumn(col, span)
-                if (w > width) width = w
-            }
+		if (column.maxWidthForAutoFit && w > column.maxWidthForAutoFit) {
+			w = column.maxWidthForAutoFit;
+		}
 
-            if (width === -1) {
-                indexs.push(index)
-                colWidths.push(undefined)
-            } else {
-                colWidths.push(width)
-                w += width
-            }
-        })
-        this.removeMessureSpan(span)
+		return w;
+	}
+	getColWidths = () => {
+		let bodyWidth = this._grid.clientWidth - utils.EmptyHolderWidth;
+		let columns = this.props.columns
+			? this.props.columns
+			: utils.generateColumns(this.props.rows);
 
-        if (indexs.length > 0) {
-            let k = bodyWidth - w
-            if (k > 0) { // All known width less than body width.
-                let l = parseInt(k / indexs.length)
-                indexs.forEach((index, i) => {
-                    if (i === indexs.length - 1) {
-                        colWidths[index] = k - (indexs.length - 1) * l
-                    } else {
-                        colWidths[index] = l
-                    }
-                })
-            } else {
-                indexs.forEach((index, i) => colWidths[index] = utils.DefaultCellWidth)
-            }
-        }
+		let span = this.appendMeasureSpan();
+		let colWidths = [], indexs = [], w = 0;
+		columns.forEach((col, index) => {
+			let width = -1;
+			if (col.minWidth) width = col.minWidth;
+			if (col.width && col.width > width) width = col.width;
 
-        return colWidths
-    }
-    updateGridSize = () => {
-        // update cells width
-        let row = this._header._dom.querySelector('.cg-row'),
-            rowWidth = parseInt(row.style.width),
-            cells = row.querySelectorAll('.cg-h-cell')
+			if (this.props.autoFitWithColumnLabel || this.props.autoFit) {
+				let w = this.measureColumn(col, span);
+				if (w > width) width = w;
+			}
 
-        if (cells.length === 0) return
+			if (width === -1) {
+				indexs.push(index);
+				colWidths.push(undefined);
+			}
+			else {
+				colWidths.push(width);
+				w += width;
+			}
+		})
+		this.removeMessureSpan(span);
 
-        // update body size
-        let bodyWidth = `${this._grid.clientWidth}px`,
-            paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
-            bodyMinHeight = `${this._grid.clientHeight - this._header._dom.clientHeight - paginationHeight}px`
+		if (indexs.length > 0) {
+			let k = bodyWidth - w;
+			if (k > 0) { // All known width less than body width.
+				let l = parseInt(k / indexs.length);
+				indexs.forEach((index, i) => {
+					if (i === indexs.length - 1) colWidths[index] = k - (indexs.length - 1) * l;
+					else colWidths[index] = l;
+				});
+			}
+			else indexs.forEach((index, i) => colWidths[index] = utils.DefaultCellWidth);
+		}
 
-        this._body._dom.style.minHeight = bodyMinHeight
+		return colWidths;
+	}
+	updateGridSize = () => {
+		// update cells width
+		let row = this._header._dom.querySelector('.cg-row'),
+			rowWidth = parseInt(row.style.width),
+			cells = row.querySelectorAll('.cg-h-cell');
 
-        if (this._grid.clientWidth >= rowWidth) {
-            this._body._dom.style.minWidth = bodyWidth
+		if (cells.length === 0) return;
 
-            let sum = 0
-            cells.forEach((cell, index) => {
-                if (index !== cells.length - 1)
-                    sum += parseInt(cell.style.width)
-            })
-            let lastCellWidth = `${rowWidth - sum - utils.EmptyHolderWidth}px`
+		// update body size
+		let bodyWidth = `${this._grid.clientWidth}px`,
+			paginationHeight = this._pagination && this._pagination._dom ? this._pagination._dom.clientHeight : 0,
+			bodyMinHeight = `${this._grid.clientHeight - this._header._dom.clientHeight - paginationHeight}px`;
 
-            // update row size
-            this._grid
-                .querySelectorAll('.cg-row')
-                .forEach(row => {
-                    row.style.minWidth = bodyWidth
-                    row.style.width = bodyWidth
+		this._body._dom.style.minHeight = bodyMinHeight;
 
-                    // update last cell width
-                    row.querySelector(`.cg-col-${cells.length - 1}`).style.width = lastCellWidth
-                })
-        }
-    }
-    updateRowsSize = () => {
-        // update cells width
-        let colWidths = []
-        this._header._dom.querySelectorAll('.cg-h-cell').forEach(c => colWidths.push(c.style.width))
-        colWidths.forEach((width, index) => {
-            this._body._dom
-                .querySelectorAll(`.cg-col-${index}`)
-                .forEach(dom => dom.style.width = width)
-        })
+		if (this._grid.clientWidth >= rowWidth) {
+			this._body._dom.style.minWidth = bodyWidth;
 
-        // update row size
-        this._grid
-            .querySelectorAll('.cg-row,.cg-header')
-            .forEach(row => {
-                row.style.minWidth = this._header._dom.style.minWidth
-                row.style.width = this._header._dom.style.width
-            })
-    }
-    appendMeasureSpan = () => {
-        const { measureLabelContext } = this.props
-        if (typeof document !== 'undefined') {
-            const span = document.createElement('span');
-            span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px'
-            span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold'
-            span.style.padding = measureLabelContext && measureLabelContext.padding ? measureLabelContext.padding : '0 8px'
-            span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
-            span.style.whiteSpace = 'nowrap'
-            span.style.position = 'absolute'
-            span.style.top = -9999
-            document.body.appendChild(span)
+			let sum = 0;
+			cells.forEach((cell, index) => {
+				if (index !== cells.length - 1) sum += parseInt(cell.style.width);
+			});
+			let lastCellWidth = `${rowWidth - sum - utils.EmptyHolderWidth}px`;
 
-            return span
-        }
-    }
-    removeMessureSpan = (span) => {
-        if (span) document.body.removeChild(span)
-    }
-    onScroll = (scrollLeft) => {
-        this._header._dom.style.left = `${-scrollLeft}px`
-    }
+			// update row size
+			this._grid
+				.querySelectorAll('.cg-row')
+				.forEach(row => {
+					row.style.minWidth = bodyWidth;
+					row.style.width = bodyWidth;
 
-    render() {
-        const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, hideGridLine } = this.props
+					// update last cell width
+					row.querySelector(`.cg-col-${cells.length - 1}`).style.width = lastCellWidth;
+				});
+		}
+	}
+	updateRowsSize = () => {
+		// update cells width
+		let colWidths = [];
+		this._header._dom.querySelectorAll('.cg-h-cell').forEach(c => colWidths.push(c.style.width));
+		colWidths.forEach((width, index) => {
+			this._body._dom
+				.querySelectorAll(`.cg-col-${index}`)
+				.forEach(dom => dom.style.width = width);
+		});
 
-        const style = {
-            height: `${pagination ? 'calc(100% - 50px)' : '100%'}`
-        }
+		// update row size
+		this._grid
+			.querySelectorAll('.cg-row,.cg-header')
+			.forEach(row => {
+				row.style.minWidth = this._header._dom.style.minWidth
+				row.style.width = this._header._dom.style.width
+			})
+	}
+	appendMeasureSpan = () => {
+		const { measureLabelContext } = this.props
+		if (typeof document !== 'undefined') {
+			const span = document.createElement('span');
+			span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px'
+			span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold'
+			span.style.padding = measureLabelContext && measureLabelContext.padding ? measureLabelContext.padding : '0 8px'
+			span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
+			span.style.whiteSpace = 'nowrap'
+			span.style.position = 'absolute'
+			span.style.top = -9999
+			document.body.appendChild(span)
 
-        return <div
-            className={`c-grid-wrapper ${hideGridLine ? 'hide-grid-line' : ''}`}
-            style={{ width: '100%', height: '100%', position: 'relative' }}
-        >
-            <div
-                id={this._gridId}
-                className='c-grid'
-                ref={ref => this._grid = ref}
-                style={style}
-            >
-                <Header
-                    gridId={this._gridId}
-                    rows={rows}
-                    columnResizing={this.props.columnResizing}
-                    columns={columns}
-                    rowHeight={rowHeight}
-                    ref={ref => this._header = ref}
-                />
+			return span
+		}
+	}
+	removeMessureSpan = (span) => {
+		if (span) document.body.removeChild(span)
+	}
+	onScroll = (scrollLeft) => {
+		this._header._dom.style.left = `${-scrollLeft}px`
+	}
 
-                <Scrollbar
-                    onScroll={this.onScroll}
-                >
-                    <Body
-                        rows={rows}
-                        columns={columns}
-                        rowHeight={rowHeight}
-                        ref={ref => this._body = ref}
-                        onRenderCell={onRenderCell}
-                    />
+	render() {
+		const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, hideGridLine } = this.props
 
-                    {progressBar && <ProgressBar {...progressBar} />}
-                </Scrollbar>
-            </div>
+		const style = {
+			height: `${pagination ? 'calc(100% - 50px)' : '100%'}`
+		}
 
-            {pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} />}
-        </div>
-    }
+		return <div
+			className={`c-grid-wrapper ${hideGridLine ? 'hide-grid-line' : ''}`}
+			style={{ width: '100%', height: '100%', position: 'relative' }}
+		>
+			<div
+				id={this._gridId}
+				className='c-grid'
+				ref={ref => this._grid = ref}
+				style={style}
+			>
+				<Header
+					gridId={this._gridId}
+					rows={rows}
+					columnResizing={this.props.columnResizing}
+					columns={columns}
+					rowHeight={rowHeight}
+					ref={ref => this._header = ref}
+				/>
+
+				<Scrollbar
+					onScroll={this.onScroll}
+				>
+					<Body
+						rows={rows}
+						columns={columns}
+						rowHeight={rowHeight}
+						ref={ref => this._body = ref}
+						onRenderCell={onRenderCell}
+					/>
+
+					{progressBar && <ProgressBar {...progressBar} />}
+				</Scrollbar>
+			</div>
+
+			{pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} />}
+		</div>
+	}
 }

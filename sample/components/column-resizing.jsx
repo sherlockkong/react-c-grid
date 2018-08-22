@@ -1,45 +1,37 @@
-import React, { Component } from 'react'
-import CGrid from './../../src'
+import React, { Component } from 'react';
+import CGrid from './../../src';
 
 class ColumnResizing extends Component {
-    constructor(props, context) {
-        super(props, context)
-    }
+	render() {
+		const { rows } = this.props;
+		const columns = [
+			{ key: 'name', label: 'Name' },
+			{ key: 'email', label: 'Email', width: 300, minWidth: 200 },
+			{ key: 'phone', label: 'Phone' },
+			{ key: 'city', label: 'City' },
+			{ key: 'country', label: 'Country' }
+		];
 
-    render() {
-        const { rows } = this.props
-        const columns = [
-            { key: 'name', label: 'Name' },
-            { key: 'email', label: 'Email', width: 300, minWidth: 200 },
-            { key: 'phone', label: 'Phone' },
-            { key: 'city', label: 'City' },
-            { key: 'country', label: 'Country' }
-        ]
-
-        return <CGrid
-            rows={rows}
-            columns={columns}
-            columnResizing={true}
-            hideGridLine={true}
-        />
-    }
+		return <CGrid
+			rows={rows}
+			columns={columns}
+			columnResizing={true}
+			hideGridLine={true}
+		/>
+	}
 }
 
 const Code = `
 class ColumnResizing extends Component {
-    constructor(props, context) {
-        super(props, context)
-    }
-
     render() {
-        const { rows } = this.props
+        const { rows } = this.props;
         const columns = [
             { key: 'name', label: 'Name' },
             { key: 'email', label: 'Email', width: 300, minWidth: 200 },
             { key: 'phone', label: 'Phone' },
             { key: 'city', label: 'City' },
             { key: 'country', label: 'Country' }
-        ]
+        ];
 
         return <CGrid
             rows={rows}
@@ -51,6 +43,6 @@ class ColumnResizing extends Component {
 `
 
 export default {
-    CGrid: ColumnResizing,
-    Code: Code
+	CGrid: ColumnResizing,
+	Code: Code
 }
