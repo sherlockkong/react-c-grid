@@ -15,7 +15,6 @@ class ChangeRowHeight extends Component {
 		return <CGrid
 			rows={rows}
 			columns={columns}
-			hideGridLine={true}
 			rowHeight={30}
 		/>
 	}
@@ -36,7 +35,6 @@ class ChangeRowHeight extends Component {
         return <CGrid
             rows={rows}
             columns={columns}
-            hideGridLine={true}
             rowHeight={30}
         />
     }

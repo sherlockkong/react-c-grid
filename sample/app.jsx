@@ -10,6 +10,9 @@ import AutoFitWidthColumnLabel from './components/auto-fit-with-column-label';
 import AutoFit from './components/auto-fit';
 import Sorting from './components/sorting';
 
+import { UnControlled as CodeMirror } from 'react-codemirror2';
+import 'codemirror/mode/jsx/jsx';
+
 const rows = utils.rows;
 const columns = utils.columns;
 
@@ -56,48 +59,58 @@ export default class App extends Component {
 			Code: Pagination.Code
 		}];
 
+		const demoSelector = <div className='left-part'>
+			<div className='top-part'>CGrid sample</div>
+			<div className='btm-part'>
+				{items.map((item, index) => (
+					<div
+						className={`item ${items[this.state.selected].Name === item.Name ? 'selected' : ''}`}
+						data-index={index}
+						key={item.Name}
+						onClick={(e) => {
+							this.setState({ selected: e.target.dataset.index })
+							this.setState({ type: 'sample' })
+						}}
+					> {item.Name} </div>
+				))}
+			</div>
+		</div>
+
+		const gridAndCode = <div className='btm-part'>
+			{this.state.type == 'sample' && items[this.state.selected].CGrid}
+			{this.state.type == 'source' &&
+				<CodeMirror
+					value={items[this.state.selected].Code}
+					options={{
+						mode: 'text/javascript',
+						theme: 'material',
+						lineNumbers: true
+					}}
+				/>
+			}
+		</div>
+
+		const nav = <div className='top-part'>
+			<div className={`nav-item ${this.state.type == 'sample' ? 'selected' : ''}`}
+				onClick={() => { this.setState({ type: 'sample' }) }}
+			> Sample </div>
+			<div className={`nav-item ${this.state.type == 'source' ? 'selected' : ''}`}
+				onClick={() => { this.setState({ type: 'source' }) }}
+			> Source </div>
+		</div>
+
+		const demo = <div className='right-part'>
+			{nav}
+			{gridAndCode}
+		</div>
+
 		return (
-			<div className='cgrid-sample'
-			>
-				<div className='left-part'>
-					<div className='top-part'>CGrid sample</div>
-					<div className='btm-part'>
-						{items.map((item, index) => {
-							return <div
-								className={`item ${items[this.state.selected].Name === item.Name ? 'selected' : ''}`}
-								data-index={index}
-								key={item.Name}
-								onClick={(e) => {
-									this.setState({ selected: e.target.dataset.index })
-									this.setState({ type: 'sample' })
-								}}
-							>
-								{item.Name}
-							</div>
-						})}
-					</div>
-				</div>
-				<div className='right-part'>
-					<div className='top-part'>
-						<div
-							className={`nav-item ${this.state.type == 'sample' ? 'selected' : ''}`}
-							onClick={() => { this.setState({ type: 'sample' }) }}
-						>
-							Sample
-                        </div>
-						<div
-							className={`nav-item ${this.state.type == 'source' ? 'selected' : ''}`}
-							onClick={() => { this.setState({ type: 'source' }) }}
-						>
-							Source
-                        </div>
-					</div>
-					<div className='btm-part'>
-						{this.state.type == 'sample' && items[this.state.selected].CGrid}
-						{this.state.type == 'source' && <pre>{items[this.state.selected].Code}</pre>}
-					</div>
-				</div>
+			<div className='cgrid-sample'>
+				{demoSelector}
+				{demo}
 			</div>
 		)
 	}
 }
+
+// items[this.state.selected].Code

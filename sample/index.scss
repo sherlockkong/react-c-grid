@@ -1,4 +1,6 @@
 @import './../src/styles/cgrid.scss';
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
 // @import './../lib/index.css';
 
 html, body {
@@ -131,11 +133,6 @@ html, body {
             flex: 1;
             overflow: auto;
 
-            pre {
-                margin: 0;
-                padding-left: 20px;
-            }
-
             .actions {
                 height: 100%;
                 width: 100%;
@@ -152,6 +149,11 @@ html, body {
                     cursor: pointer;
                     margin-right: 20px;
                 }
+            }
+            
+            .react-codemirror2,
+            .CodeMirror {
+                height: 100%;
             }
         }
     }

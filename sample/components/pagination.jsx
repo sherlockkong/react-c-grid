@@ -47,7 +47,6 @@ class Pagination extends Component {
 			this.state.selected * pagination.pageSize);
 
 		return <CGrid
-			hideGridLine={true}
 			rows={subRows}
 			columns={columns}
 			pagination={pagination}
@@ -104,7 +103,6 @@ class Pagination extends Component {
             this.state.selected * pagination.pageSize);
 
         return <CGrid
-            hideGridLine={true}
             rows={subRows}
             columns={columns}
             pagination={pagination}

@@ -25,7 +25,6 @@ class AutoFit extends Component {
 			rows={rows}
 			columns={columns}
 			autoFit={true}
-			hideGridLine={true}
 			measureLabelContext={measureLabelContext}
 		/>
 	}
@@ -56,7 +55,6 @@ class AutoFit extends Component {
             rows={rows}
             columns={columns}
             autoFit={true}
-            hideGridLine={true}
             measureLabelContext={measureLabelContext}
         />
     }

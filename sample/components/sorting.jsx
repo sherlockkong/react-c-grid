@@ -44,7 +44,6 @@ class Sorting extends Component {
 		return <CGrid
 			rows={this.state.rows}
 			columns={columns}
-			hideGridLine={true}
 		/>
 	}
 }
@@ -93,7 +92,6 @@ class Sorting extends Component {
         return <CGrid
             rows={this.state.rows}
             columns={columns}
-            hideGridLine={true}
         />
     }
 }

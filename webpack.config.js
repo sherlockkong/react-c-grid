@@ -1,13 +1,32 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const plugins = [new ExtractTextPlugin("index.css")];
+const plugins = [new MiniCssExtractPlugin()];
 
 const config = {
     entry: { app: "./sample/index.js" },
 
     mode: process.env.NODE_ENV || 'development',
+
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
+    },
+
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true 
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
 
     // optimization: {
     //     splitChunks: {
@@ -37,10 +56,11 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
-                })
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
             }
         ]
     },

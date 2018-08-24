@@ -20,7 +20,7 @@ utils.nodeListForEachPolyill();
  *      autoFit: bool // measure all text in rows.
  *      autoFitWithColumnLabel: bool
  *      columnResizing: bool
- *      hideGridLine: bool
+ *      showGridLine: bool
  *      onRenderCell: (key, row) => react element
  *      measureLabelContext: {
  *          fontSize: '13px',
@@ -247,14 +247,14 @@ export default class CGrid extends React.Component {
 	}
 
 	render() {
-		const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, hideGridLine } = this.props
+		const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, showGridLine } = this.props
 
 		const style = {
 			height: `${pagination ? 'calc(100% - 50px)' : '100%'}`
 		}
 
 		return <div
-			className={`c-grid-wrapper ${hideGridLine ? 'hide-grid-line' : ''}`}
+			className={`c-grid-wrapper ${showGridLine ? '' : 'hide-grid-line'}`}
 			style={{ width: '100%', height: '100%', position: 'relative' }}
 		>
 			<div
