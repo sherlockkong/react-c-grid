@@ -1,13 +1,11 @@
 {
   "name": "react-c-grid",
   "version": "1.0.4",
-  "description": "React data grid",
+  "description": "React grid",
   "main": "lib/index.js",
   "author": "SherlockKong",
   "keywords": [
     "react-grid",
-    "react-table",
-    "react-data-table",
     "react-data-table",
     "react",
     "material-ui"
@@ -34,7 +32,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
@@ -42,12 +40,13 @@
     "compression": "^1.7.3",
     "css-loader": "^0.28.9",
     "express": "^4.16.2",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "next",
     "hoek": "4.2.1",
     "node-sass": "^4.9.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   }
 }
