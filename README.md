@@ -39,11 +39,9 @@ class App extends Component {
 Run the sample:
 ```bash
 # Install dependencies
-yarn
-# Run webpack-dev-server
-yarn run wds
+npm install
 # Start sample
-yarn start
+npm start
 ```
 
 ## License
