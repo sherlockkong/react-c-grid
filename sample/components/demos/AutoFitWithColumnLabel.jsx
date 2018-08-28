@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import CGrid from './../../src'
+import React, { Component } from 'react';
+import CGrid from '../../../src';
 
 class AutoFitWidthColumnLabel extends Component {
 	render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CGrid from './../../src';
+import CGrid from '../../../src';
 
 class Sorting extends Component {
 	constructor(props, context) {

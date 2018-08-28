@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as utils from './../utils';
+import * as utils from '../utils';
 
 export default class Scrollbar extends React.Component {
 	constructor(props, context) {

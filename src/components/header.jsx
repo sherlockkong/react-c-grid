@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import ResizeBar from './resize-bar';
-import Sorting from './sorting';
+import ResizeBar from './ResizeBar';
+import Sorting from './Sorting';
 
-import * as utils from './../utils'
+import * as utils from '../utils';
 
 /**
  *  Props: 

@@ -2,19 +2,55 @@ import React, { Component } from 'react';
 import * as utils from './utils';
 import './index.scss';
 
-import ColumnResizing from './components/column-resizing';
-import Pagination from './components/pagination';
-import CustomCell from './components/custom-cell';
-import ChangeRowHeight from './components/change-row-height';
-import AutoFitWidthColumnLabel from './components/auto-fit-with-column-label';
-import AutoFit from './components/auto-fit';
-import Sorting from './components/sorting';
+import ColumnResizing from './components/demos/ColumnResizing';
+import Pagination from './components/demos/Pagination';
+import CustomCell from './components/demos/CustomCell';
+import ChangeRowHeight from './components/demos/ChangeRowHeight';
+import AutoFitWidthColumnLabel from './components/demos/AutoFitWithColumnLabel';
+import AutoFit from './components/demos/AutoFit';
+import Sorting from './components/demos/Sorting';
+
+import { DemoSelector } from './components/DemoSelector';
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/jsx/jsx';
 
 const rows = utils.rows;
-const columns = utils.columns;
+const items = [{
+	Name: 'Columns Resizing',
+	CGrid: React.createElement(ColumnResizing.CGrid, { rows: rows }),
+	Code: ColumnResizing.Code
+},
+{
+	Name: 'Custom Cell',
+	CGrid: React.createElement(CustomCell.CGrid, { rows: rows }),
+	Code: CustomCell.Code
+},
+{
+	Name: 'Change Row Height',
+	CGrid: React.createElement(ChangeRowHeight.CGrid, { rows: rows }),
+	Code: ChangeRowHeight.Code
+},
+{
+	Name: 'Auto Fit',
+	CGrid: React.createElement(AutoFit.CGrid, { rows: rows }),
+	Code: AutoFit.Code
+},
+{
+	Name: 'Auto Fit Width Column Label',
+	CGrid: React.createElement(AutoFitWidthColumnLabel.CGrid, { rows: rows }),
+	Code: AutoFitWidthColumnLabel.Code
+},
+{
+	Name: 'Sorting',
+	CGrid: React.createElement(Sorting.CGrid, { rows: rows }),
+	Code: Sorting.Code
+},
+{
+	Name: 'Pagination',
+	CGrid: React.createElement(Pagination.CGrid, { rows: rows }),
+	Code: Pagination.Code
+}];
 
 export default class App extends Component {
 	constructor(props, context) {
@@ -22,95 +58,58 @@ export default class App extends Component {
 		this.state = { selected: 0, type: 'sample' };
 	}
 
-	render() {
-		let items = [{
-			Name: 'Columns Resizing',
-			CGrid: React.createElement(ColumnResizing.CGrid, { rows: rows }),
-			Code: ColumnResizing.Code
-		},
-		{
-			Name: 'Custom Cell',
-			CGrid: React.createElement(CustomCell.CGrid, { rows: rows }),
-			Code: CustomCell.Code
-		},
-		{
-			Name: 'Change Row Height',
-			CGrid: React.createElement(ChangeRowHeight.CGrid, { rows: rows }),
-			Code: ChangeRowHeight.Code
-		},
-		{
-			Name: 'Auto Fit',
-			CGrid: React.createElement(AutoFit.CGrid, { rows: rows }),
-			Code: AutoFit.Code
-		},
-		{
-			Name: 'Auto Fit Width Column Label',
-			CGrid: React.createElement(AutoFitWidthColumnLabel.CGrid, { rows: rows }),
-			Code: AutoFitWidthColumnLabel.Code
-		},
-		{
-			Name: 'Sorting',
-			CGrid: React.createElement(Sorting.CGrid, { rows: rows }),
-			Code: Sorting.Code
-		},
-		{
-			Name: 'Pagination',
-			CGrid: React.createElement(Pagination.CGrid, { rows: rows }),
-			Code: Pagination.Code
-		}];
-
-		const demoSelector = <div className='left-part'>
-			<div className='top-part'>CGrid sample</div>
+	renderGridAndSampleCode = () => {
+		return (
 			<div className='btm-part'>
-				{items.map((item, index) => (
-					<div
-						className={`item ${items[this.state.selected].Name === item.Name ? 'selected' : ''}`}
-						data-index={index}
-						key={item.Name}
-						onClick={(e) => {
-							this.setState({ selected: e.target.dataset.index })
-							this.setState({ type: 'sample' })
+				{this.state.type == 'sample' && items[this.state.selected].CGrid}
+				{this.state.type == 'source' &&
+					<CodeMirror
+						value={items[this.state.selected].Code}
+						options={{
+							mode: 'text/javascript',
+							theme: 'material',
+							lineNumbers: true
 						}}
-					> {item.Name} </div>
-				))}
+					/>
+				}
 			</div>
-		</div>
+		)
+	}
 
-		const gridAndCode = <div className='btm-part'>
-			{this.state.type == 'sample' && items[this.state.selected].CGrid}
-			{this.state.type == 'source' &&
-				<CodeMirror
-					value={items[this.state.selected].Code}
-					options={{
-						mode: 'text/javascript',
-						theme: 'material',
-						lineNumbers: true
-					}}
-				/>
-			}
-		</div>
+	renderNav = () => {
+		return (
+			<div className='nav-bar'>
+				<div className={`nav-item ${this.state.type == 'sample' ? 'selected' : ''}`}
+					onClick={() => { this.setState({ type: 'sample' }) }}
+				> Sample </div>
+				<div className={`nav-item ${this.state.type == 'source' ? 'selected' : ''}`}
+					onClick={() => { this.setState({ type: 'source' }) }}
+				> Source </div>
+			</div>
+		)
+	}
 
-		const nav = <div className='top-part'>
-			<div className={`nav-item ${this.state.type == 'sample' ? 'selected' : ''}`}
-				onClick={() => { this.setState({ type: 'sample' }) }}
-			> Sample </div>
-			<div className={`nav-item ${this.state.type == 'source' ? 'selected' : ''}`}
-				onClick={() => { this.setState({ type: 'source' }) }}
-			> Source </div>
-		</div>
+	renderDemo = () => {
+		return (
+			<div className='cg-demo'>
+				{this.renderNav()}
+				{this.renderGridAndSampleCode()}
+			</div>
+		)
+	}
 
-		const demo = <div className='right-part'>
-			{nav}
-			{gridAndCode}
-		</div>
+	render() {
+		const demoSelectorProps = {
+			items,
+			selected: this.state.selected,
+			onSelectedChange: (index) => this.setState({ type: 'sample', selected: index })
+		}
 
 		return (
 			<div className='cgrid-sample'>
-				{demoSelector}
-				{demo}
+				<DemoSelector {...demoSelectorProps} />
+				{this.renderDemo()}
 			</div>
 		)
 	}
 }
-
-// items[this.state.selected].Code

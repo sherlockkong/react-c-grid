@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CGrid from './../../src';
+import CGrid from '../../../src';
 
 class CustomCell extends Component {
 	onRenderCell = (key, row) => {

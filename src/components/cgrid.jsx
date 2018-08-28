@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import Header from './header';
-import Body from './body';
-import Pagination from './pagination';
-import ProgressBar from './progress-bar';
-import Scrollbar from './scrollbar';
+import Header from './Header';
+import Body from './Body';
+import Pagination from './Pagination';
+import ProgressBar from './ProgressBar';
+import Scrollbar from './Scrollbar';
 
 import * as utils from '../utils';
 
