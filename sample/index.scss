@@ -39,15 +39,20 @@ html, body {
         background: $dark-color;
         color: white;
 
+        box-shadow: 2px 2px 4px $dark-color;
+        position: relative;
+        z-index: 999999;
+
         .cg-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex: 0 0 60px;
+            
+            text-transform: uppercase;
             color: $logo-color;
             font-weight: bold;
             font-size: 16px;
-            display: flex;
-            align-items: center;
-            text-transform: uppercase;
-            justify-content: center;
         }
 
         .demos-container {
@@ -56,6 +61,7 @@ html, body {
 
             display: flex;
             flex-direction: column;
+            position: relative;
 
             .d-item {
                 display: flex;
@@ -79,7 +85,7 @@ html, body {
             }
 
             .d-indicator {
-                position: fixed;
+                position: absolute;
                 left: 0;
 
                 width: 3px;
@@ -90,29 +96,25 @@ html, body {
             }
         }
 
-        &:hover {
-            ::-webkit-scrollbar {
-                display: initial;
-            }
-        }
+        // &:hover {
+        //     ::-webkit-scrollbar {
+        //         display: initial;
+        //     }
+        // }
 
-        ::-webkit-scrollbar {
-            display: none;
-            width: 5px;
-            height: 5px;
-        }
+        // ::-webkit-scrollbar {
+        //     display: none;
+        //     width: 5px;
+        //     height: 5px;
+        // }
     
-        ::-webkit-scrollbar-track {
-            background: rgba(0,0,0,.1);
-        }
+        // ::-webkit-scrollbar-track {
+        //     background: rgba(0,0,0,.1);
+        // }
     
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,.1);
-        }
-    }
-
-    .hidden {
-        display: none;
+        // ::-webkit-scrollbar-thumb {
+        //     background: rgba(0,0,0,.1);
+        // }
     }
 
     .cg-demo {
@@ -127,6 +129,10 @@ html, body {
             
             background: $dark-color;
             
+            box-shadow: 2px 2px 4px $dark-color;
+            position: relative;
+            z-index: 999999;
+
             .nav-item {
                 height: 100%;
                 color: $text;
@@ -142,7 +148,7 @@ html, body {
             }
         }
 
-        .btm-part {
+        .grid-or-code {
             flex: 1;
             overflow: auto;
 
