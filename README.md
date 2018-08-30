@@ -5,7 +5,7 @@
 
 ## Demo
 
-- [http://grid.sherlockkong.com/](http://grid.sherlockkong.com/)
+- [http://grid.sherlockkong.com/](http://grid.sherlockkong.com)
 
 ## Installation
 
