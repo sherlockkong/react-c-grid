@@ -1,14 +1,19 @@
-react-c-grid
-=========================
+# react-c-grid
 
-[Demo](http://grid.sherlockkong.com/) 
+[![npm version](https://badge.fury.io/js/react-c-grid.svg)](https://badge.fury.io/js/react-c-grid)
+
+## Demo
+
+- [http://grid.sherlockkong.com/](http://grid.sherlockkong.com/)
 
 ## Installation
+
 ```bash
 npm install react-c-grid
 ```
 
 ## Usage
+
 ```javascript
 import CGrid from 'react-c-grid'
 // import index.css from node_modules/react-c-grid/lib to your sass or less file.
@@ -29,14 +34,16 @@ class App extends Component {
 
         return <CGrid 
             rows={rows} 
-            columns={columns} 
+            columns={columns}
         />
     }
 }
 ```
+
 ## Sample
 
 Run the sample:
+
 ```bash
 # Install dependencies
 npm install
