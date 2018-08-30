@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`body 1`] = `
+<div
+  className="cg-body"
+>
+  <div
+    className="place-holder-row"
+    style={
+      Object {
+        "height": "48px",
+        "lineHeight": "48px",
+      }
+    }
+  />
+  <div
+    className="cg-row odd"
+    style={
+      Object {
+        "height": "48px",
+        "lineHeight": "48px",
+      }
+    }
+  >
+    <div
+      className="cg-col-0 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      Stewart
+    </div>
+    <div
+      className="cg-col-1 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      nec@auctorMaurisvel.edu
+    </div>
+    <div
+      className="cg-col-2 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      Amet Diam Eu PC
+    </div>
+    <div
+      className="cg-col-3 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      1675071109899
+    </div>
+    <div
+      className="cg-col-4 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      San Marcello
+    </div>
+    <div
+      className="cg-col-5 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      Iceland
+    </div>
+    <div
+      className="cg-col-6 cg-cell"
+      style={
+        Object {
+          "height": "48px",
+          "lineHeight": "48px",
+        }
+      }
+    >
+      14778
+    </div>
+  </div>
+</div>
+`;
+
+exports[`body change row height 1`] = `
+<div
+  className="cg-body"
+>
+  <div
+    className="place-holder-row"
+    style={
+      Object {
+        "height": "66px",
+        "lineHeight": "66px",
+      }
+    }
+  />
+  <div
+    className="cg-row odd"
+    style={
+      Object {
+        "height": "66px",
+        "lineHeight": "66px",
+      }
+    }
+  >
+    <div
+      className="cg-col-0 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      Stewart
+    </div>
+    <div
+      className="cg-col-1 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      nec@auctorMaurisvel.edu
+    </div>
+    <div
+      className="cg-col-2 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      Amet Diam Eu PC
+    </div>
+    <div
+      className="cg-col-3 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      1675071109899
+    </div>
+    <div
+      className="cg-col-4 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      San Marcello
+    </div>
+    <div
+      className="cg-col-5 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      Iceland
+    </div>
+    <div
+      className="cg-col-6 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      14778
+    </div>
+  </div>
+</div>
+`;
+
+exports[`body custom render cell 1`] = `
+<div
+  className="cg-body"
+>
+  <div
+    className="place-holder-row"
+    style={
+      Object {
+        "height": "66px",
+        "lineHeight": "66px",
+      }
+    }
+  />
+  <div
+    className="cg-row odd"
+    style={
+      Object {
+        "height": "66px",
+        "lineHeight": "66px",
+      }
+    }
+  >
+    <div
+      className="cg-col-0 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-Stewart
+    </div>
+    <div
+      className="cg-col-1 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-nec@auctorMaurisvel.edu
+    </div>
+    <div
+      className="cg-col-2 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-Amet Diam Eu PC
+    </div>
+    <div
+      className="cg-col-3 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-1675071109899
+    </div>
+    <div
+      className="cg-col-4 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-San Marcello
+    </div>
+    <div
+      className="cg-col-5 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-Iceland
+    </div>
+    <div
+      className="cg-col-6 cg-cell"
+      style={
+        Object {
+          "height": "66px",
+          "lineHeight": "66px",
+        }
+      }
+    >
+      custom-14778
+    </div>
+  </div>
+</div>
+`;

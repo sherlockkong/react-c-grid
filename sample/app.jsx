@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './index.scss';
 
 import DemoSelector from './components/DemoSelector';

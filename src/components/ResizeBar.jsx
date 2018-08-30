@@ -86,14 +86,16 @@ export default class ResizeBar extends React.Component {
 	render() {
 		const { colIndex } = this.props;
 
-		return <div
-			className="col-resize-bar"
-			data-col-index={`${colIndex}`}
-			onMouseDown={this.onMouseDown}
-			ref={ref => this._dom = ref}
-		>
-			<div className="holder holder-left" />
-			<div className="holder holder-right" />
-		</div>
+		return (
+			<div
+				className="col-resize-bar"
+				data-col-index={`${colIndex}`}
+				onMouseDown={this.onMouseDown}
+				ref={ref => this._dom = ref}
+			>
+				<div className="holder holder-left" />
+				<div className="holder holder-right" />
+			</div>
+		);
 	}
 }

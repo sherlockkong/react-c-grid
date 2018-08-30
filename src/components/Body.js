@@ -4,6 +4,8 @@ import * as utils from '../utils';
 /**
  *  Props: 
  *      rows: []
+ *      columns: []
+ *      rowHeight: number
  *      onRenderCell: (key, row) => react element
  */
 export default class Body extends React.Component {
@@ -51,11 +53,13 @@ export default class Body extends React.Component {
 	}
 
 	render() {
-		return <div
-			className='cg-body'
-			ref={ref => this._dom = ref}
-		>
-			{this.renderRows()}
-		</div>
+		return (
+			<div
+				className='cg-body'
+				ref={ref => this._dom = ref}
+			>
+				{this.renderRows()}
+			</div>
+		);
 	}
 }

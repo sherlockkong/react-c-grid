@@ -39,11 +39,13 @@ export default class Header extends React.Component {
 	}
 
 	render() {
-		return <div
-			className="cg-header"
-			ref={ref => this._dom = ref}
-		>
-			{this.renderColumns()}
-		</div>
+		return (
+			<div
+				className="cg-header"
+				ref={ref => this._dom = ref}
+			>
+				{this.renderColumns()}
+			</div>
+		);
 	}
 }

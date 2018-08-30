@@ -213,18 +213,20 @@ export default class Scrollbar extends React.Component {
 			height: '100%',
 		};
 
-		return <div style={wrapperStyle}>
-			<div style={containerStyle}
-				ref={ref => this._container = ref}
-				onScroll={this.onScroll}
-				onMouseEnter={this.onMouseEnter}
-				onMouseLeave={this.onMouseLeave}
-			>
-				{this.props.children && this.props.children}
-			</div>
+		return (
+			<div style={wrapperStyle}>
+				<div style={containerStyle}
+					ref={ref => this._container = ref}
+					onScroll={this.onScroll}
+					onMouseEnter={this.onMouseEnter}
+					onMouseLeave={this.onMouseLeave}
+				>
+					{this.props.children && this.props.children}
+				</div>
 
-			{this.renderVerticalScrollbar()}
-			{this.renderHorizontalScrollbar()}
-		</div>
+				{this.renderVerticalScrollbar()}
+				{this.renderHorizontalScrollbar()}
+			</div>
+		);
 	}
 }

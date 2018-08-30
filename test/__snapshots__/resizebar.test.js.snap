@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resizebar 1`] = `
+<div
+  className="col-resize-bar"
+  data-col-index="0"
+  onMouseDown={[Function]}
+>
+  <div
+    className="holder holder-left"
+  />
+  <div
+    className="holder holder-right"
+  />
+</div>
+`;

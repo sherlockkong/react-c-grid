@@ -75,13 +75,15 @@ export default class ProgressBar extends React.Component {
 	render() {
 		const { show } = this.props;
 
-		return <div
-			className={`cg-progress-bar-wrapper ${show ? 'show' : ''}`}
-			ref={ref => this._wrapper = ref}
-		>
-			<div ref={ref => this._barBg = ref} className="cg-progress-bar-bg">
-				<div ref={ref => this._bar = ref} className="cg-progress-bar"></div>
+		return (
+			<div
+				className={`cg-progress-bar-wrapper ${show ? 'show' : ''}`}
+				ref={ref => this._wrapper = ref}
+			>
+				<div ref={ref => this._barBg = ref} className="cg-progress-bar-bg">
+					<div ref={ref => this._bar = ref} className="cg-progress-bar"></div>
+				</div>
 			</div>
-		</div>
+		);
 	}
 }

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`scrollbar 1`] = `
+<div
+  style={
+    Object {
+      "height": "100%",
+      "overflow": "hidden",
+      "position": "relative",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onScroll={[Function]}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "marginBottom": 0,
+        "marginRight": 0,
+        "overflow": "scroll",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    Grid Content
+  </div>
+  <div
+    className="vertical-scrollbar-container"
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseMove={[Function]}
+  >
+    <div
+      className="vertical-scrollbar scrollbar"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseMove={[Function]}
+    />
+  </div>
+  <div
+    className="horizontal-scrollbar-container"
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseMove={[Function]}
+  >
+    <div
+      className="horizontal-scrollbar scrollbar"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseMove={[Function]}
+    />
+  </div>
+</div>
+`;

@@ -221,73 +221,70 @@ export default class CGrid extends React.Component {
 			.forEach(row => {
 				row.style.minWidth = this._header._dom.style.minWidth
 				row.style.width = this._header._dom.style.width
-			})
+			});
 	}
 	appendMeasureSpan = () => {
-		const { measureLabelContext } = this.props
+		const { measureLabelContext } = this.props;
 		if (typeof document !== 'undefined') {
 			const span = document.createElement('span');
-			span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px'
-			span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold'
-			span.style.padding = measureLabelContext && measureLabelContext.padding ? measureLabelContext.padding : '0 8px'
-			span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif'
-			span.style.whiteSpace = 'nowrap'
-			span.style.position = 'absolute'
-			span.style.top = -9999
-			document.body.appendChild(span)
-
-			return span
+			span.style.fontSize = measureLabelContext && measureLabelContext.fontSize ? measureLabelContext.fontSize : '13px';
+			span.style.fontWeight = measureLabelContext && measureLabelContext.fontWeight ? measureLabelContext.fontWeight : 'bold';
+			span.style.padding = measureLabelContext && measureLabelContext.padding ? measureLabelContext.padding : '0 8px';
+			span.style.fontFamily = measureLabelContext && measureLabelContext.fontFamily ? measureLabelContext.fontFamily : 'Open Sans,Segoe UI,Roboto,Helvetica Neue,Tahoma,Geneva,Verdana,sans-serif';
+			span.style.whiteSpace = 'nowrap';
+			span.style.position = 'absolute';
+			span.style.top = -9999;
+			document.body.appendChild(span);
+			return span;
 		}
 	}
 	removeMessureSpan = (span) => {
-		if (span) document.body.removeChild(span)
+		if (span) document.body.removeChild(span);
 	}
 	onScroll = (scrollLeft) => {
-		this._header._dom.style.left = `${-scrollLeft}px`
+		this._header._dom.style.left = `${-scrollLeft}px`;
 	}
 
 	render() {
-		const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, showGridLine } = this.props
+		const { rows, columns, progressBar, pagination, rowHeight, onRenderCell, showGridLine } = this.props;
 
-		const style = {
-			height: `${pagination ? 'calc(100% - 50px)' : '100%'}`
-		}
+		const style = { height: `${pagination ? 'calc(100% - 50px)' : '100%'}` };
 
-		return <div
-			className={`c-grid-wrapper ${showGridLine ? '' : 'hide-grid-line'}`}
-			style={{ width: '100%', height: '100%', position: 'relative' }}
-		>
+		return (
 			<div
-				id={this._gridId}
-				className='c-grid'
-				ref={ref => this._grid = ref}
-				style={style}
+				className={`c-grid-wrapper ${showGridLine ? '' : 'hide-grid-line'}`}
+				style={{ width: '100%', height: '100%', position: 'relative' }}
 			>
-				<Header
-					gridId={this._gridId}
-					rows={rows}
-					columnResizing={this.props.columnResizing}
-					columns={columns}
-					rowHeight={rowHeight}
-					ref={ref => this._header = ref}
-				/>
-
-				<Scrollbar
-					onScroll={this.onScroll}
+				<div
+					id={this._gridId}
+					className='c-grid'
+					ref={ref => this._grid = ref}
+					style={style}
 				>
-					<Body
+					<Header
+						gridId={this._gridId}
 						rows={rows}
+						columnResizing={this.props.columnResizing}
 						columns={columns}
 						rowHeight={rowHeight}
-						ref={ref => this._body = ref}
-						onRenderCell={onRenderCell}
+						ref={ref => this._header = ref}
 					/>
 
-					{progressBar && <ProgressBar {...progressBar} />}
-				</Scrollbar>
-			</div>
+					<Scrollbar onScroll={this.onScroll} >
+						<Body
+							rows={rows}
+							columns={columns}
+							rowHeight={rowHeight}
+							ref={ref => this._body = ref}
+							onRenderCell={onRenderCell}
+						/>
 
-			{pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} />}
-		</div>
+						{progressBar && <ProgressBar {...progressBar} />}
+					</Scrollbar>
+				</div>
+
+				{pagination && <Pagination ref={ref => this._pagination = ref} {...pagination} />}
+			</div>
+		);
 	}
 }

@@ -5,8 +5,8 @@ import * as utils from '../utils';
  *  Props: 
  *      pageSize: number
  *      itemsCount: number
- *      selected: bool
- *      showCountMsg: string
+ *      selected: number
+ *      showCountMsg: bool
  *      visiblePageCount: number (min-value : 3)
  *      onFormatCountMsg: (selected, pageSize, itemsCount) => html
  *      selectedPageChanged: (selected) => { }
@@ -112,14 +112,16 @@ export default class Pagination extends React.Component {
 	}
 
 	render() {
-		const { itemsCount, showCountMsg } = this.props
+		const { itemsCount, showCountMsg } = this.props;
 
-		return <div
-			className="cg-pagination"
-			ref={ref => this._dom = ref}
-		>
-			{itemsCount > 0 && this.renderPaging()}
-			{itemsCount > 0 && showCountMsg && this.renderCountMsg()}
-		</div>
+		return (
+			<div
+				className="cg-pagination"
+				ref={ref => this._dom = ref}
+			>
+				{itemsCount > 0 && this.renderPaging()}
+				{itemsCount > 0 && showCountMsg && this.renderCountMsg()}
+			</div>
+		);
 	}
 }

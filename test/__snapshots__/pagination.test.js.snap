@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pagination custom count message 1`] = `
+<div
+  className="cg-pagination"
+>
+  <div
+    className="cg-pages"
+  >
+    <span
+      className="cg-page-button cg-left-button disabled"
+      onClick={[Function]}
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
+        />
+        <path
+          d="M0-.5h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+    <span
+      className="cg-page selected"
+      data-page={1}
+      onClick={[Function]}
+    >
+      1
+    </span>
+    <span
+      className="cg-page "
+      data-page={2}
+      onClick={[Function]}
+    >
+      2
+    </span>
+    <span
+      className="cg-page "
+      data-page={3}
+      onClick={[Function]}
+    >
+      3
+    </span>
+    <span
+      className="cg-page "
+      data-page={4}
+      onClick={[Function]}
+    >
+      4
+    </span>
+    <span
+      className="cg-page "
+      data-page={5}
+      onClick={[Function]}
+    >
+      5
+    </span>
+    <span
+      className="cg-page "
+      data-page={6}
+      onClick={[Function]}
+    >
+      6
+    </span>
+    <span
+      className="cg-page "
+      data-page={7}
+      onClick={[Function]}
+    >
+      7
+    </span>
+    <span
+      className="cg-page-button cg-right-button "
+      onClick={[Function]}
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+        />
+        <path
+          d="M0-.25h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+  </div>
+  1-15-100
+</div>
+`;
+
+exports[`pagination with count message 1`] = `
+<div
+  className="cg-pagination"
+>
+  <div
+    className="cg-pages"
+  >
+    <span
+      className="cg-page-button cg-left-button disabled"
+      onClick={[Function]}
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
+        />
+        <path
+          d="M0-.5h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+    <span
+      className="cg-page selected"
+      data-page={1}
+      onClick={[Function]}
+    >
+      1
+    </span>
+    <span
+      className="cg-page "
+      data-page={2}
+      onClick={[Function]}
+    >
+      2
+    </span>
+    <span
+      className="cg-page "
+      data-page={3}
+      onClick={[Function]}
+    >
+      3
+    </span>
+    <span
+      className="cg-page "
+      data-page={4}
+      onClick={[Function]}
+    >
+      4
+    </span>
+    <span
+      className="cg-page "
+      data-page={5}
+      onClick={[Function]}
+    >
+      5
+    </span>
+    <span
+      className="cg-page "
+      data-page={6}
+      onClick={[Function]}
+    >
+      6
+    </span>
+    <span
+      className="cg-page "
+      data-page={7}
+      onClick={[Function]}
+    >
+      7
+    </span>
+    <span
+      className="cg-page-button cg-right-button "
+      onClick={[Function]}
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+        />
+        <path
+          d="M0-.25h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+  </div>
+  <div
+    className="count-msg"
+  >
+    1-15 of 100
+  </div>
+</div>
+`;
+
+exports[`pagination without count message 1`] = `
+<div
+  className="cg-pagination"
+>
+  <div
+    className="cg-pages"
+  >
+    <span
+      className="cg-page-button cg-left-button "
+      onClick={[Function]}
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
+        />
+        <path
+          d="M0-.5h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+    <span
+      className="cg-page "
+      data-page={1}
+      onClick={[Function]}
+    >
+      1
+    </span>
+    <span
+      className="cg-page selected"
+      data-page={2}
+      onClick={[Function]}
+    >
+      2
+    </span>
+    <span
+      className="cg-page "
+      data-page={3}
+      onClick={[Function]}
+    >
+      3
+    </span>
+    <span
+      className="cg-page "
+      data-page={4}
+      onClick={[Function]}
+    >
+      4
+    </span>
+    <span
+      className="cg-page "
+      data-page={5}
+      onClick={[Function]}
+    >
+      5
+    </span>
+    <span
+      className="cg-page "
+      data-page={6}
+      onClick={[Function]}
+    >
+      6
+    </span>
+    <span
+      className="cg-page "
+      data-page={7}
+      onClick={[Function]}
+    >
+      7
+    </span>
+    <span
+      className="cg-page-button cg-right-button "
+      onClick={[Function]}
+    >
+      <svg
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+        />
+        <path
+          d="M0-.25h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+  </div>
+</div>
+`;
