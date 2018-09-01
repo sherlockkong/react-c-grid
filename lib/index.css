@@ -78,7 +78,7 @@
       display: none; }
       .c-grid-wrapper .c-grid .cg-header .cg-h-cell .sort-hd svg {
         transition: all .3s; }
-      .c-grid-wrapper .c-grid .cg-header .cg-h-cell .sort-hd.desc svg {
+      .c-grid-wrapper .c-grid .cg-header .cg-h-cell .sort-hd.rotate svg {
         transform: rotate(180deg); }
     .c-grid-wrapper .c-grid .cg-header .cg-h-cell.sorting .sort-hd {
       display: flex;
