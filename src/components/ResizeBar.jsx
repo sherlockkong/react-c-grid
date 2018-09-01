@@ -6,7 +6,6 @@ import * as utils from '../utils';
  *      colIndex: number
  *      column: Column
  */
-
 export default class ResizeBar extends React.Component {
 	constructor(props, context) {
 		super(props, context);

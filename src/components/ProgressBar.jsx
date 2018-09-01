@@ -7,7 +7,6 @@ import * as utils from '../utils';
  *      color: string
  *      background: string
  */
-
 export default class ProgressBar extends React.Component {
 	componentDidMount = () => this.checkEvent()
 	componentDidUpdate = () => this.checkEvent()

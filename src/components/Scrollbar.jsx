@@ -1,6 +1,10 @@
 import * as React from 'react';
 import * as utils from '../utils';
 
+/**
+ *  Props: 
+ *      onScroll: () => { }
+ */
 export default class Scrollbar extends React.Component {
 	constructor(props, context) {
 		super(props, context);
