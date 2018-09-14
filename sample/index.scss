@@ -71,15 +71,12 @@ html, body {
                 padding-left: 50px;
                 font-size: 13px;
                 cursor: pointer;
-                color: $text;
 
                 transition: all .3s;
-                
-                &:hover, &.selected {
-                    color: $accent;
-                }
+                text-decoration: none;
+                color: $text;
 
-                &.selected {
+                &:hover, &.selected {
                     color: $accent;
                 }
             }

@@ -1,14 +1,13 @@
-export const columns = [
-    { key: 'name', label: 'Name' },
-    { key: 'email', label: 'Email' },
-    { key: 'company', label: 'Company' },
-    { key: 'phone', label: 'Phone' },
-    { key: 'city', label: 'City' },
-    { key: 'country', label: 'Country' },
-    { key: 'postal', label: 'Postal' }
-]
+import React from 'react';
 
-export const rows = [
+import ColumnResizing from '../components/demos/ColumnResizing';
+import Pagination from '../components/demos/Pagination';
+import CustomCell from '../components/demos/CustomCell';
+import ChangeRowHeight from '../components/demos/ChangeRowHeight';
+import AutoFit from '../components/demos/AutoFit';
+import Sorting from '../components/demos/Sorting';
+
+const rows = [
     {
         "name": "Stewart",
         "email": "nec@auctorMaurisvel.edu",
@@ -909,4 +908,35 @@ export const rows = [
         "country": "Palau",
         "postal": "12220"
     }
-]
+];
+
+export const demos = [{
+    Name: 'Columns Resizing',
+    CGrid: <ColumnResizing.CGrid rows={rows} />,
+    Code: ColumnResizing.Code,
+},
+{
+    Name: 'Custom Cell',
+    CGrid: <CustomCell.CGrid rows={rows} />,
+    Code: CustomCell.Code,
+},
+{
+    Name: 'Change Row Height',
+    CGrid: <ChangeRowHeight.CGrid rows={rows} />,
+    Code: ChangeRowHeight.Code,
+},
+{
+    Name: 'Auto Fit',
+    CGrid: <AutoFit.CGrid rows={rows} />,
+    Code: AutoFit.Code,
+},
+{
+    Name: 'Sorting',
+    CGrid: <Sorting.CGrid rows={rows} />,
+    Code: Sorting.Code,
+},
+{
+    Name: 'Pagination',
+    CGrid: <Pagination.CGrid rows={rows} />,
+    Code: Pagination.Code,
+}];

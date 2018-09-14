@@ -6,7 +6,7 @@ var path = require('path');
 app.set('port', 9898);
 app.use(compression());
 app.use(express.static(path.join(__dirname, '/public')));
-app.get('/', function (req, res) {
+app.get(/(?<!\.json)$/, function (req, res) {
 	res.sendFile(path.join(__dirname, process.env.NODE_ENV === 'development' ? '/debug.html' : '/index.html'));
 });
 app.listen(app.get('port'), function () {

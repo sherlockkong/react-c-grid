@@ -1,24 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NavBar from './NavBar';
+import { Route, Switch } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
+import NavBar from './NavBar';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/jsx/jsx';
 
 class Demo extends React.Component {
 
-	renderGridOrCode = () => {
-		const { demoSelector: { selected }, demo: { mode } } = this.props;
-
-		if (!selected) return null;
-
+	content = (item) => {
+		const { demo: { mode } } = this.props;
 		return (
-			<div className='grid-or-code'>
-				{mode == 'GRID' && selected.CGrid}
+			<React.Fragment>
+				{mode == 'GRID' && item.CGrid}
 				{mode == 'CODE' &&
 					<CodeMirror
-						value={selected.Code}
+						value={item.Code}
 						options={{
 							mode: 'text/javascript',
 							theme: 'material',
@@ -26,6 +25,20 @@ class Demo extends React.Component {
 						}}
 					/>
 				}
+			</React.Fragment>
+		)
+	}
+
+	renderGridOrCode = () => {
+		const { demoSelector: { demos } } = this.props;
+
+		return (
+			<div className='grid-or-code'>
+				<Switch>
+					{demos.map((item, index) => (
+						<Route key={item.Name} exact={index === 0} path={index === 0 ? '/' : `/${item.Name.replace(/ /g, '').toLowerCase()}`} component={() => this.content(item)} />
+					))}
+				</Switch>
 			</div>
 		)
 	}
@@ -40,4 +53,4 @@ class Demo extends React.Component {
 	}
 }
 
-export default connect(state => state)(Demo);
+export default withRouter(connect(state => state)(Demo));
