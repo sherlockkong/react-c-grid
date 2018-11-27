@@ -44,6 +44,7 @@
     "hoek": "4.2.1",
     "immutability-helper": "^2.7.1",
     "jest": "^23.5.0",
+    "merge": "^1.2.1",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.2",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
