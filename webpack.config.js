@@ -1,83 +1,86 @@
 const path = require('path');
 const webpack = require('webpack');
-const devMode = process.env.NODE_ENV !== 'production';
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const plugins = [new MiniCssExtractPlugin()];
 
-const config = {
-    entry: { app: "./sample/index.js" },
+module.exports = (env) => {
+    if (!env) env = {};
 
-    mode: process.env.NODE_ENV || 'development',
+    const config = {
+        entry: { app: "./sample/index.js" },
 
-    performance: {
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000,
-    },
+        mode: env.prod ? 'production' : 'development',
 
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true 
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
-    },
+        performance: {
+            maxEntrypointSize: 512000,
+            maxAssetSize: 512000,
+        },
 
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             commons: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: 'vendors',
-    //                 chunks: 'all'
-    //             }
-    //         }
-    //     }
-    // },
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    cache: true,
+                    parallel: true,
+                    sourceMap: true
+                }),
+                new OptimizeCSSAssetsPlugin({})
+            ]
+        },
 
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'sample/public/dist')
-    },
+        // optimization: {
+        //     splitChunks: {
+        //         cacheGroups: {
+        //             commons: {
+        //                 test: /[\\/]node_modules[\\/]/,
+        //                 name: 'vendors',
+        //                 chunks: 'all'
+        //             }
+        //         }
+        //     }
+        // },
 
-    plugins: plugins,
+        output: {
+            filename: '[name].bundle.js',
+            path: path.resolve(__dirname, 'sample/public/dist')
+        },
 
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loaders: ["babel-loader"]
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                ],
-            }
-        ]
-    },
+        plugins: plugins,
 
-    resolve: {
-        extensions: ['.js', '.jsx']
+        module: {
+            rules: [
+                {
+                    test: /\.jsx?$/,
+                    exclude: /node_modules/,
+                    loaders: ["babel-loader"]
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        env.prod ? MiniCssExtractPlugin.loader : 'style-loader',
+                        'css-loader',
+                        'sass-loader',
+                    ],
+                }
+            ]
+        },
+
+        resolve: {
+            extensions: ['.js', '.jsx']
+        }
     }
-}
 
-if (process.env.NODE_ENV !== 'production') {
-    plugins.push(new webpack.HotModuleReplacementPlugin());
-    config.devtool = 'inline-source-map';
-    config.devServer = {
-        contentBase: './sample/public/dist',
-        port: 7878,
-        hot: true
-    };
-}
+    if (!env.prod) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        config.devtool = 'inline-source-map';
+        config.devServer = {
+            contentBase: './sample/public/dist',
+            port: 7878,
+            hot: true
+        };
+    }
 
-module.exports = config;
+    return config;
+}
