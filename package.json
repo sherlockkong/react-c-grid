@@ -17,7 +17,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "start": "node ./sample/server.js --env.prod",
+    "start": "NODE_ENV=production node ./sample/server.js",
     "debug": "node ./sample/server.js",
     "wds": "webpack-dev-server --open",
     "build": "babel src --out-dir lib && sass --sourcemap=none src/styles/cgrid.scss lib/index.css && webpack --env.prod"
