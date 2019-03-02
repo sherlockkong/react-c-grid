@@ -16,7 +16,7 @@ npm install react-c-grid
 ## Usage
 
 ```javascript
-import CGrid from 'react-c-grid'
+import CGrid from 'react-c-grid';
 // import index.css from node_modules/react-c-grid/lib to your sass or less file.
 
 class App extends Component {
@@ -41,10 +41,9 @@ class App extends Component {
 Run the sample:
 
 ```bash
-# Install dependencies
 npm install
-# Start sample
-npm start
+npm run wds
+npm run debug
 ```
 
 ## License
