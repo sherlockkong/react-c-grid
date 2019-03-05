@@ -11,19 +11,6 @@ class DemoSelector extends React.PureComponent {
 
 	componentDidMount = () => {
 		this.props.dispatch(AppActions.DemoSelector.SetDemos(utils.demos));
-		this.updateIndicatorPosition();
-	}
-	componentDidUpdate = () => this.updateIndicatorPosition();
-
-	updateIndicatorPosition = () => {
-		if (!this._container || !this._indicator) return;
-
-		let selected = this._container.querySelector('.selected');
-		if (selected) {
-			let rect = selected.getBoundingClientRect();
-			let containerRect = this._container.getBoundingClientRect();
-			this._indicator.style.top = `${rect.top - containerRect.top}px`;
-		}
 	}
 
 	render() {
@@ -44,10 +31,10 @@ class DemoSelector extends React.PureComponent {
 							to={index === 0 ? '/' : `/${item.Name.replace(/ /g, '').toLowerCase()}`}
 							data-index={index}
 						>
-							{item.Name}
+							<span className={`${item.Icon} icon`} />
+							<span className="name">{item.Name}</span>
 						</Link>
 					))}
-					<div ref={ref => this._indicator = ref} className="d-indicator" />
 				</div>
 			</div>
 		)

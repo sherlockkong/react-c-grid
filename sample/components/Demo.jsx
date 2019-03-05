@@ -20,7 +20,6 @@ class Demo extends React.PureComponent {
 						value={item.Code}
 						options={{
 							mode: 'text/javascript',
-							theme: 'material',
 							lineNumbers: true
 						}}
 					/>

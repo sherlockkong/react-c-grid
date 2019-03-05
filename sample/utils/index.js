@@ -912,31 +912,37 @@ const rows = [
 
 export const demos = [{
     Name: 'Columns Resizing',
+    Icon: 'mdi mdi-arrow-split-vertical',
     CGrid: <ColumnResizing.CGrid rows={rows} />,
     Code: ColumnResizing.Code,
 },
 {
     Name: 'Custom Cell',
+    Icon: 'mdi mdi-table-edit',
     CGrid: <CustomCell.CGrid rows={rows} />,
     Code: CustomCell.Code,
 },
 {
     Name: 'Change Row Height',
+    Icon: 'mdi mdi-table-row-height',
     CGrid: <ChangeRowHeight.CGrid rows={rows} />,
     Code: ChangeRowHeight.Code,
 },
 {
     Name: 'Auto Fit',
+    Icon: 'mdi mdi-arrow-expand-horizontal',
     CGrid: <AutoFit.CGrid rows={rows} />,
     Code: AutoFit.Code,
 },
 {
     Name: 'Sorting',
+    Icon: 'mdi mdi-sort',
     CGrid: <Sorting.CGrid rows={rows} />,
     Code: Sorting.Code,
 },
 {
     Name: 'Pagination',
+    Icon: 'mdi mdi-dots-horizontal',
     CGrid: <Pagination.CGrid rows={rows} />,
     Code: Pagination.Code,
 }];

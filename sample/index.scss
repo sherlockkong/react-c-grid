@@ -1,6 +1,5 @@
 @import './../src/styles/cgrid.scss';
 @import '~codemirror/lib/codemirror.css';
-@import '~codemirror/theme/material.css';
 // @import './../lib/index.css';
 
 html, body {
@@ -23,12 +22,13 @@ html, body {
     height: 100%;
     display: flex;
 
-    
-    $accent: rgb(76, 223, 246);
-    $text: rgb(71, 82, 101);
-    $dark-color: rgb(21, 31, 45);
+    $accent: #f8e178;
+    $text: white;
+    $dark-color-1: #535358;
+    $dark-color-2: #67676b;
+    $dark-color-3: #444448;
 
-    $logo-color: rgb(223,231,238);
+    $logo-color: #f8e178;
     $button-color: rgb(107,122,139);
     
     .demo-selector {
@@ -36,23 +36,21 @@ html, body {
         display: flex;
         flex-direction: column;
 
-        background: $dark-color;
+        background: $dark-color-1;
         color: white;
 
-        box-shadow: 2px 2px 4px $dark-color;
         position: relative;
         z-index: 999999;
 
         .cg-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex: 0 0 60px;
+            line-height: 60px;
+            padding-left: 15px;
             
             text-transform: uppercase;
             color: $logo-color;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 30px;
         }
 
         .demos-container {
@@ -66,52 +64,43 @@ html, body {
             .d-item {
                 display: flex;
                 align-items: center;
-                flex: 0 0 50px;
+                flex: 0 0 40px;
 
-                padding-left: 50px;
-                font-size: 13px;
+                font-size: 12px;
                 cursor: pointer;
+                margin-left: 10px;
+                border-top-left-radius: 40px;
+                border-bottom-left-radius: 40px;
 
                 transition: all .3s;
                 text-decoration: none;
                 color: $text;
 
-                &:hover, &.selected {
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     color: $accent;
+                    flex: 0 0 40px;
+                    height: 40px;
+                    font-size: 18px;
+                }
+
+                .name {
+                    display: flex;
+                    align-items: center;
+                    height: 40px;
+                }
+
+                &:hover {
+                    background: linear-gradient(90deg,#67676b,transparent);
+                }
+
+                &.selected {
+                    background: $dark-color-3;
                 }
             }
-
-            .d-indicator {
-                position: absolute;
-                left: 0;
-
-                width: 3px;
-                height: 50px;
-
-                transition: all .3s;
-                background: $accent;
-            }
         }
-
-        // &:hover {
-        //     ::-webkit-scrollbar {
-        //         display: initial;
-        //     }
-        // }
-
-        // ::-webkit-scrollbar {
-        //     display: none;
-        //     width: 5px;
-        //     height: 5px;
-        // }
-    
-        // ::-webkit-scrollbar-track {
-        //     background: rgba(0,0,0,.1);
-        // }
-    
-        // ::-webkit-scrollbar-thumb {
-        //     background: rgba(0,0,0,.1);
-        // }
     }
 
     .cg-demo {
@@ -124,9 +113,8 @@ html, body {
             display: flex;
             align-items: center;
             
-            background: $dark-color;
+            background: $dark-color-1;
             
-            box-shadow: 2px 2px 4px $dark-color;
             position: relative;
             z-index: 999999;
 
@@ -139,7 +127,11 @@ html, body {
                 cursor: pointer;
                 font-size: 13px;
 
-                &:hover, &.selected {
+                &:hover {
+                    color: #afafb4;
+                }
+
+                &.selected {
                     color: $accent;
                 }
             }
