@@ -11,7 +11,7 @@ const OrderType = {
  *      colIndex: number
  *      column: {}
  */
-export default class Sorting extends React.Component {
+export default class Sorting extends React.PureComponent {
 	constructor(props, context) {
 		super(props, context);
 

@@ -5,7 +5,7 @@ import * as utils from '../utils';
  *  Props: 
  *      onScroll: () => { }
  */
-export default class Scrollbar extends React.Component {
+export default class Scrollbar extends React.PureComponent {
 	constructor(props, context) {
 		super(props, context);
 

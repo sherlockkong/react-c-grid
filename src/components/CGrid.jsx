@@ -33,7 +33,7 @@ utils.nodeListForEachPolyill();
  *      label: string
  *      width: number
  */
-export default class CGrid extends React.Component {
+export default class CGrid extends React.PureComponent {
 	constructor(props, context) {
 		super(props, context);
 

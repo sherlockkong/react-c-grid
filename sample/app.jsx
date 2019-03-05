@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import DemoSelector from './components/DemoSelector';
 import Demo from './components/Demo';
 
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
 
 	render() {
 		return (

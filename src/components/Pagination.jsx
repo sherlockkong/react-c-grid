@@ -11,7 +11,7 @@ import * as utils from '../utils';
  *      onFormatCountMsg: (selected, pageSize, itemsCount) => html
  *      selectedPageChanged: (selected) => { }
  */
-export default class Pagination extends React.Component {
+export default class Pagination extends React.PureComponent {
 	constructor(props, context) {
 		super(props, context);
 

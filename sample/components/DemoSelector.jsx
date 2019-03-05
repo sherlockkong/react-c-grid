@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { AppActions } from '../store';
 import * as utils from '../utils';
 
-class DemoSelector extends React.Component {
+class DemoSelector extends React.PureComponent {
 
 	componentDidMount = () => {
 		this.props.dispatch(AppActions.DemoSelector.SetDemos(utils.demos));

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { AppActions } from '../store';
 
-class NavBar extends React.Component {
+class NavBar extends React.PureComponent {
 	render() {
 		const { mode } = this.props;
 

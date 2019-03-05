@@ -9,7 +9,7 @@ import * as utils from '../utils';
  *  Props: 
  *      columns: []
  */
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
 	renderColumns = () => {
 		let columns = this.props.columns
 			? this.props.columns

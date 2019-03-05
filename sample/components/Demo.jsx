@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/mode/jsx/jsx';
 
-class Demo extends React.Component {
+class Demo extends React.PureComponent {
 
 	content = (item) => {
 		const { demo: { mode } } = this.props;

@@ -8,7 +8,7 @@ import * as utils from '../utils';
  *      rowHeight: number
  *      onRenderCell: (key, row) => react element
  */
-export default class Body extends React.Component {
+export default class Body extends React.PureComponent {
 	renderRows = () => {
 		const { rows, rowHeight } = this.props;
 		if (!rows) return null;
