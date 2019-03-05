@@ -2,12 +2,12 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 6px;
+    width: 10px;
     height: 100%;
     z-index: 1000;
 
     .scrollbar {
-        width: 4px;
+        width: 8px;
         margin-right: 2px;
     }
 }
@@ -16,12 +16,12 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 6px;
+    height: 10px;
     width: 100%;
     z-index: 1000;
 
     .scrollbar {
-        height: 4px;
+        height: 8px;
         margin-bottom: 2px;
     }
 }
