@@ -181,7 +181,7 @@ export default class Scrollbar extends React.PureComponent {
 				if (this._vBar) this._vBar.style.opacity = 0;
 				if (this._hBar) this._hBar.style.opacity = 0;
 			}
-		}, 500);
+		}, 1000);
 	}
 
 	onMouseEnter = () => {
