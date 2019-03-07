@@ -40,7 +40,6 @@ html, body {
         color: white;
 
         position: relative;
-        z-index: 999999;
 
         .cg-logo {
             flex: 0 0 60px;
@@ -114,25 +113,34 @@ html, body {
             align-items: center;
             
             background: $dark-color-1;
-            
             position: relative;
-            z-index: 999999;
 
             .nav-item {
-                height: 100%;
-                color: $text;
-                padding: 0 60px;
-                align-items: center;
                 display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                width: 40px;
+                border-radius: 20px;
+
+                color: $accent;
                 cursor: pointer;
-                font-size: 13px;
+                font-size: 18px;
+
+                position: absolute;
+                right: 20px;
+                top: 10px;
+
+                border: none;
+                outline: none;
+                background: $dark-color-1;
 
                 &:hover {
-                    color: #afafb4;
+                    background: darken($dark-color-1, 5%);
                 }
-
-                &.selected {
-                    color: $accent;
+                
+                &:active {
+                    background: darken($dark-color-1, 10%);
                 }
             }
         }

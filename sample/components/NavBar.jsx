@@ -5,16 +5,14 @@ import { AppActions } from '../store';
 
 class NavBar extends React.PureComponent {
 	render() {
-		const { mode } = this.props;
+		const { mode, dispatch } = this.props;
+		const nextMode = mode === 'GRID' ? 'CODE' : 'GRID';
 
 		return (
 			<div className='nav-bar'>
-				<div className={`nav-item ${mode === 'GRID' ? 'selected' : ''}`}
-					onClick={() => this.props.dispatch(AppActions.Demo.SetDemoMode('GRID'))}
-				> GRID </div>
-				<div className={`nav-item ${mode === 'CODE' ? 'selected' : ''}`}
-					onClick={() => this.props.dispatch(AppActions.Demo.SetDemoMode('CODE'))}
-				> CODE </div>
+				<button className={`nav-item mdi ${mode === 'GRID' ? 'mdi-code-tags' : 'mdi-grid-large'}`}
+					onClick={() => dispatch(AppActions.Demo.SetDemoMode(nextMode))}
+				/>
 			</div>
 		)
 	}
