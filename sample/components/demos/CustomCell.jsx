@@ -8,7 +8,7 @@ class CustomCell extends Component {
 			return (
 				<div className='actions' style={style}>
 					<button data-name={row.name} onClick={(e) => { alert(`Edit ${e.target.dataset.name}`) }}>EDIT</button>
-					<button data-name={row.name} onClick={(e) => { alert(`Delete ${e.target.dataset.name}`) }}>DELTE</button>
+					<button data-name={row.name} onClick={(e) => { alert(`Delete ${e.target.dataset.name}`) }}>DELETE</button>
 				</div>
 			)
 		}
