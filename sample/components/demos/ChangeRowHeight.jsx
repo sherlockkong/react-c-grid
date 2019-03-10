@@ -22,22 +22,24 @@ class ChangeRowHeight extends Component {
 
 const Code = `
 class ChangeRowHeight extends Component {
-    render() {
-        const { rows } = this.props;
-        const columns = [
-            { key: 'name', label: 'Name' },
-            { key: 'email', label: 'Email', width: 300 },
-            { key: 'company', label: 'Company' },
-            { key: 'city', label: 'City' },
-            { key: 'country', label: 'Country' }
-        ];
+	render() {
+		const { rows } = this.props;
+		const columns = [
+			{ key: 'name', label: 'Name' },
+			{ key: 'email', label: 'Email', width: 300 },
+			{ key: 'company', label: 'Company' },
+			{ key: 'city', label: 'City' },
+			{ key: 'country', label: 'Country' }
+		];
 
-        return <CGrid
-            rows={rows}
-            columns={columns}
-            rowHeight={30}
-        />
-    }
+		return (
+			<CGrid
+				rows={rows}
+				columns={columns}
+				rowHeight={30}
+			/>
+		);
+	}
 }
 `
 
