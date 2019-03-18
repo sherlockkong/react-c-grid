@@ -109,11 +109,12 @@ html, body {
 
         .nav-bar {
             flex: 0 0 60px;
-            display: flex;
-            align-items: center;
-            
             background: $dark-color-1;
             position: relative;
+
+            a {
+                text-decoration: none;
+            }
 
             .nav-item {
                 display: flex;
@@ -126,10 +127,8 @@ html, body {
                 color: $accent;
                 cursor: pointer;
                 font-size: 18px;
-
-                position: absolute;
-                right: 20px;
-                top: 10px;
+                margin: 10px 5px;
+                float: right;
 
                 border: none;
                 outline: none;
