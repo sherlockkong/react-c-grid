@@ -41,6 +41,7 @@ class App extends Component {
 Run the sample:
 
 ```bash
+cd sample
 npm install
 npm run wds
 npm run debug
