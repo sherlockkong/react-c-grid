@@ -20,20 +20,20 @@
     "build": "babel src --out-dir lib && sass --sourcemap=none src/styles/cgrid.scss lib/index.css"
   },
   "peerDependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
   },
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-core": "6.26.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
     "babel-preset-env": "1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "jest": "^23.5.0",
-    "node-sass": "^4.11.0",
-    "react-test-renderer": "^16.4.2"
+    "babel-preset-react": "6.24.1",
+    "jest": "23.5.0",
+    "node-sass": "4.11.0",
+    "react-test-renderer": "16.4.2"
   }
 }
