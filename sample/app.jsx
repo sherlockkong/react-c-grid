@@ -3,8 +3,6 @@ import './index.scss';
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-import "@babel/polyfill";
-
 import DemoSelector from './components/DemoSelector';
 import Demo from './components/Demo';
 
